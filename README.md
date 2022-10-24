@@ -7,3 +7,4 @@ Sinfonia is a Quantum Mechanics (incomplete) note.
 Metodi 2 is a mathematical methods for physics 2 note, explaining complex analysis and distributions.
 \\
 Physica est ommnis divisa in partes tres is a physics 3 note, answering the questions that could be asked at the exam.
+I'm uploading the pdf file along with the TeX one but on God you won't be seeing me uploading the shit ton of images I used.
