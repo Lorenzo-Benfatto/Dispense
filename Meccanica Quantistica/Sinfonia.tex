@@ -1,0 +1,3350 @@
+\documentclass[twoside]{article}
+\usepackage[utf8]{inputenc}
+
+
+\title{\textbf{La Sinfonia della Realtà}}
+\author{Lorenzo Benfatto}
+\date{Ottobre 2020}
+
+\usepackage{tikz}
+\tikzstyle{mybox} = [draw=black, very thick, rectangle, rounded corners, inner ysep=5pt, inner xsep=5pt]
+\usepackage[italian]{babel}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{amsmath,amssymb,mathrsfs}
+
+\usepackage{amsthm}
+
+\newtheorem{definition}{Definizione}[section]
+\newtheorem{proposition}{Proposizione}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corollary}{Corollario}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\usepackage{dsfont}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.75cm, left=2.5cm, right=2.5cm, heightrounded, bindingoffset=5mm}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\usepackage{chngcntr}
+\usepackage{epigraph}
+\usepackage{fancyhdr}
+\usepackage{marginnote}
+\usepackage{titlesec}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\definecolor{mygray}{gray}{0.6}
+\definecolor{goldenrod}{rgb}{0.85, 0.65, 0.13}
+\definecolor{darkcandyapplered}{rgb}{0.64, 0.0, 0.0}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\includegraphics*[scale=0.15]{LB(good).JPG}}
+\fancyhead[RE,LO]{\textcolor{mygray}{de Quantorum Mēchanicā}}
+\fancyhead[CE,CO]{\includegraphics*[scale=0.1]{logo.JPG}}
+\fancyfoot[CE,CO]{\textcolor{mygray}{\leftmark}}
+\fancyfoot[LE,RO]{\textbf{\thepage}}
+
+\setlength{\headheight}{33pt}
+
+\counterwithin{equation}{section}
+\counterwithin{equation}{subsection}
+\setlength\parindent{0pt}
+
+\renewcommand{\vec}[1]{\textbf{#1}}
+
+\begin{document}
+
+\maketitle
+
+\titleformat{\section}[display]
+{\sffamily\bfseries\filleft}
+{\color{goldenrod}\fontsize{26}{32}\selectfont\thesection}
+{0pt}
+{\huge\raggedleft}
+[{\color{goldenrod}\titlerule[1pt]}]
+
+
+\noindent
+\rule{\textwidth}{1pt}
+\\ \\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{calabi-yau.png}
+\label{fig:calabi-yau}
+\end{figure}
+
+
+\vfill
+
+\epigraph{Non mi piace. E mi spiace di averci avuto a che fare.}{\textit{Erwin Schr\"odinger \\ parlando della Meccanica Quantistica}}
+
+\section*{Introduzione}
+
+\begin{wrapfigure}[7]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{platone-aristotele.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\epigraph{La vita dell'uomo è governata dalla Natura e dalle leggi.}{\textit{Aristotele, 384-322 a.c.}}
+
+\epigraph{Dio fa sempre geometria.}{\textit{Platone, 427-347 a.c.}}
+
+\subsection*{Abstract}
+Rossi va da Ken.\\
+Gli dice che è depresso, che Meccanica Quantistica gli sembra dura e crudele.\\
+Gli dice che si sente solo in un mondo minaccioso.\\
+Ken Sensei dice: " La cura è semplice. Il grande Paffuti è in città. Vada a ricevimento. La dovrebbe tirar su."\\
+L'uomo scoppia in lacrime. "Ma Sensei," dice, "Paffuti sono io."\\
+Buona questa. Bonati ride. Rullo di tamburi. Mi bocciano.\\
+
+\subsection*{Descrizione}
+Tutto quanto scritto è un adattamento delle note fornite dal professor Paffuti per il Corso di Meccanica Quantistica nell'a.a. 2019-2020.\\
+In prima battuta sono stati ignorati la stragrande maggioranza dei complementi.\\
+Grafici e immagini sono "presi in prestito" dalle note stesse, almeno finchè non imparerò a / avrò tempo e voglia di produrle io personalmente.\\
+C'è sicuramente una notevole quantità di errori, non garantisco su nulla se non la qualità dell'impaginazione e la spocchia di cui è impregnato il layout di questo testo. \\
+
+\vspace{1.5 mm}
+\begin{tikzpicture}
+\node [mybox] (box){
+    \begin{minipage}{0.97\textwidth}
+\textbf{Also Sprach :}In sezioni come questa inserisco citazioni d'autore sui vari argomenti
+    \end{minipage}
+};
+\end{tikzpicture}
+
+\newpage
+
+\setcounter{section}{0}
+
+\tableofcontents
+
+\newpage
+
+\part{L'alba della Nuova Scienza}
+\rule{\textwidth}{1pt}
+\vspace{2cm}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{scuola di atene.jpg}
+\label{fig:Atene}
+\end{figure}
+\hfill \textit{La Scuola di Atene, Raffaello Sanzio, 1509-1511 d.c.}
+
+\vfill
+
+\epigraph{Ultima scepsi. Ma che sono alla fin fine le verità dell'uomo? \\ Sono gli errori inconfutabili dell'uomo.}{\textit{Friedrich Nietzsche, 1844–1900 d.c.}}
+
+\newpage
+
+\section{Dalla Meccanica Classica alla Meccanica Quantistica}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{pitagora.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{8mm}
+
+\epigraph{Fatica su queste cose [le scienze], praticale, occorre che tu le ami: esse ti porranno sulle tracce della divina virtù.}{\textit{Pitagora, 570-495 a.c.}}
+\vspace{8mm}
+
+Storicamente si ha l'inizio della teoria dei quanti con il problema dell'equilibrio termico per la radiazione elettromagnetica.
+\\
+Si consideri della radiazione elettromagnetica all'equilibrio termico a temperatura $T$ in un volume $V$.
+\\
+Tale sistema possiede un'energia totale $U$ e una densità di energia $u=U/V$.
+Si può scrivere la $u$ in funzione di una densità di energia spettrale
+\begin{equation}
+    u=\int_{-\infty} ^{\infty}u_{\nu} \ d\nu
+\end{equation}
+Il problema è calcolare $u_{\nu}(\nu,T)$.
+\\
+\\
+Ai tempi di Planck erano noti due andamenti per $u_{\nu}$:
+\begin{itemize}
+    \item \textbf{Grandi $\nu$} \textit{Legge di Wien}
+    \begin{equation}
+        u_{\nu}\simeq c_1 \nu^3 e^{-\beta \nu /T}
+    \end{equation}
+    \item \textbf{Piccoli $\nu$} \textit{Legge di Rayleigh-Jeans}
+    \begin{equation}
+        u_{\nu}\simeq c_2 \nu^2 T
+    \end{equation}
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsection{Formula di Planck}
+La distribuzione $u_{\nu}$ deve essere universale, per qeusta ragione Planck cerca di determinarla mettendo all'equilibrio il sistema più semplice possibile: un oscillatore armonico.
+\\
+Trova
+\begin{equation}
+    u_{\nu}=8\pi\frac{\nu^2}{c^3}E
+\end{equation}
+A questo punto decide di fare un'interpolazione dei dati sperimentali e ottiene la \textit{Distribuzione di Planck} che descrive perfettamente i dati:
+\begin{equation} \label{1.1.2}
+    u_{\nu}=8\pi \frac{h\nu^3}{c^3}\frac{1}{e^{h\nu/kT}-1}
+\end{equation}
+Planck riesce anche a riderivare la (\ref{1.1.2}) in maniera teorica passando dal secondo principio della termodinamica.
+\\
+La sua derivazione tuttavia presuppone che \textit{l'energia non possa essere scambiata in maniera continua, ma solo attraverso quanti discreti di valore $h\nu$}.
+
+\subsection{Effetto Fotoelettrico}
+Se l'ipotesi di Planck fosse vera dovrebbero esserci delle verifiche sperimentali dirette.
+\\
+Da una scoperta precedente di Hertz era noto che sotto l'azione della luce i metalli emettono elettroni.
+\\
+Se la teoria della quantizzazione fosse vera dovrebbe voler dire che non si ha emissione di elettroni sotto una certa frequenza di soglia.
+Inoltre l'energia degli elettroni emessi non deve dipendere dall'intensità della luce, ma dalla frequenza.
+\\
+Tutte queste congetture sono state confermate.
+\\
+\\
+Questo ha portato all'introduzione dei fotoni come particelle di massa nulla e con energia $h\nu$ indipendenti tra loro.
+\\ \\
+\begin{tikzpicture}
+\node [mybox] (box){
+    \begin{minipage}{\textwidth}
+\textbf{Also Sprach Heisenberg:}\textit{ [...] \'E ovvio che qualcosa non può avere la forma di un moto ondulatorio ed essere composto di particelle allo stesso tempo - i due concetti sono troppo differenti.
+\\
+Si può postulare che due separate entità, una che abbia le proprietà delle particelle e una che abbia quelle delle onde si combinino in qualche modo a formare la "luce" [...]
+\\
+La soluzione a questo dilemma è che queste due immagini mentali (particellare e corpuscolare) siano entrambe incomplete e abbiano solo la validità di analogie, accurate solo in casi limitati [...]
+\\
+La luce e la materia sono entrambe entità singole e l'apparente dualità nasce dalle limitazioni del nostro linguaggio.
+}
+    \end{minipage}
+};
+\end{tikzpicture}
+
+\vspace{0.5cm}
+
+\subsection{Livelli Energetici}
+Altre due grandi problematiche affliggevano la fisica nel '900:
+\begin{itemize}
+    \item Non si può dar conto della struttura atomica in fisica classica.
+    \item Se si prende un modello planetario ci si aspetta un'emissione di energia con armoniche secondarie, invece sperimentalmente si osserva solo l'armonica fondamentale.
+\end{itemize}
+Il \textit{modello atomico di Bohr} riesce a spiegare questi fenomeni partendo da due postulati:
+\begin{itemize}
+    \item L'energia dell'atomo ha solo livelli discreti.
+    \item I processi di emissione/assorbimento sono legati ai "salti" che compiono gli elettroni da un livello all'altro con emissione di fotoni regolata da:
+    \begin{equation}
+        h\nu_{nm}=E_n -E_m
+    \end{equation}
+\end{itemize}
+Da cui deriverebbe che la frequenza della luce non ha a che vedere con i periodi classici delle orbite.
+
+%\vspace{0.1cm}
+
+\subsection{Determinazione dei livelli}
+Se si considera ad esempio l'oscillatore armonico, la orbite descrivono traiettorie chiuse nello spazio delle fasi fissate dal vincolo sulla conservazione dell'energia:
+\begin{equation}
+    \frac{p^2}{2m}+\frac{1}{2}m\omega^2 q^2 =E
+\end{equation}
+Sono ellissi nel piano $p,q$ con semiassi $a=\sqrt{2mE}$ e $b=\sqrt{2E/(m\omega^2)}$.
+\\
+L'area dell'ellisse vale
+\begin{equation}
+    A=\pi a b=\pi \frac{2E}{\omega}=\frac{E}{\nu}
+\end{equation}
+La regola di quantizzazione $E=nh\nu$ impone che le orbite permesse siano quelle per cui l'area sottesa dalla curva descritta dall'orbita è un multiplo di $h$.
+\\
+Si può generalizzare ad un qualsiasi moto periodico come:
+\begin{equation} \label{1.4.3}
+    A=\oint p \ dq = nh
+\end{equation}
+e in un potenziale qualunque vale
+\begin{equation}
+    p=\pm\sqrt{2m(E-V(q))}
+\end{equation}
+
+La (\ref{1.4.3}) è nota come \textit{Regola di quantizzazione di Bohr-Sommerfeld}.
+
+%\vspace{0.1cm}
+
+\subsection{Orbite circolari}
+Se si considera una particella che effettua un moto circolare (per esempio un modello di elettrone in un atomo di Idrogeno) si può andare ad applicare la (\ref{1.4.3}).
+\\
+La variabile è quella angolare $\varphi$ e il suo momento coniugato è il momento angolare $L$.
+\begin{equation} \label{1.5.1}
+    \oint L \ d\varphi =nh \ \ \ \Rightarrow \ \ \ L=n\frac{h}{2\pi}\equiv n\hbar
+\end{equation}
+La (\ref{1.5.1}) indica che non solo l'energia, ma anche il momento angolare è quantizzato.
+
+\vspace{0.3cm}
+
+\subsection{Aspetti ondulatori delle particelle}
+
+Si suppone un sistema come quello in Figura (\ref{proiettili}):
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.43]{proiettili.JPG}
+\caption{Esperimento con proiettili}
+\label{proiettili}
+\end{figure}
+
+Un cannone spara dei proiettili che possono passare attraverso il foro 1 o il foro 2 e vengono rivelati da un rivelatore che scorre lungo la coordinata x.
+\\
+Ogni arrivo è registrato da un segnale e i segnali sono \textit{discreti}.
+\\
+Se si lascia aperto solo il foro 1 ci si aspetta la distribuzione di probabilità $P_1$ e analogamente per il foro 2.
+\\
+Se si lasciano aperti entrambi i fori si vede la distribuzione $P_{12}$.
+\\
+Risulta $P_{12}=P_1 + P_2$.
+
+
+Si ripete l'esperimento ma con delle onde, utilizzando un sistema come in Figura (\ref{onde}).
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.43]{onde.JPG}
+\caption{Esperimento con onde}
+\label{onde}
+\end{figure}
+
+In questo caso $I_{12} \ne I_1 + I_2$ perchè nelle onde l'intensità è proporzionale al quadrato dell'ampiezza.
+\\
+Ci si aspetta allora che a sommarsi linearmente siano le ampiezze $=h_1 +h_2$ ma che a venire osservata sia $I_{12}=|h|^2=|h_1 +h_2|^2$.
+\\
+\\
+Si ripete ancora una volta l'esperimento, ma questa volta il sistema è quello in Figura (\ref{elettroni}) e a venire sparati sono degli elettroni.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.43]{elettroni.JPG}
+\caption{Esperimento con elettroni}
+\label{elettroni}
+\end{figure}
+
+Gli elettroni vengono sempre rivelati in modo \textit{discreto} come i proiettili.
+\\
+Quando viene effettuato l'esperimento coprendo il foro 1 oppure il foro 2 si osservano $P_1$ e $P_2$ esattamente come nel caso dei proiettili.
+\\
+Se però i fori sono entrambi aperti si osserva $P_{12} \ne P_1 +P_2$. Si osserva un'interferenza.
+\\
+Risulta perciò sperimentalmente che l'affermazione:
+\\
+\textit{L'elettrone passa o dal foro 1 o dal foro 2 è falsa}.
+\\
+Infatti il numero di elettroni rivelati quando entrambi i fori sono aperti è minore del numero di elettroni rivelati quando solo uno dei due fori lo è.
+\\
+Una soluzione che funziona è assegnare a ogni cammino un'\textit{ampiezza di probabilità}:
+\begin{equation}
+    P_1=|\phi_1|^2 \ \ ; \ \ P_2=|\phi_2|^2 \ \ ; \ \ P_{12}=|\phi_1 + \phi_2|^2
+\end{equation}
+Le ampiezze forniscono una descrizione probabilistica e hanno una struttura lineare.
+
+
+\newpage
+
+\section{Definizioni e primordi della teoria dei quanti}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{socrate.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{12mm}
+\epigraph{Una vita senza ricerca non merita di essere vissuta.}{\textit{Socrate, 469-399 a.c.}}
+\vspace{12mm}
+
+La Meccanica Quantistica nasce nel 1925-1926 quando Erwin Schr\"odinger e Werner Heisenberg sviluppano quasi contemporaneamente due differenti formulazioni della stessa teoria: rispettivamente, la meccanica ondulatoria e la meccanica delle matrici.
+\\
+Una differente formulazione ancora viene introdotta nel 1948 da Richard Feynman: la teoria degli integrali sui cammini.
+\\
+\subsection{Funzione d'onda}
+Ogni stato quantico è definito da una funzione complessa $\psi(q,t)$, indipendente dai momenti coniugati.\\
+La sua interpretazione è puramente probabilistica: la probabilità di trovare il sistema nell'intervallo [$q$,$q+dq$] vale:
+\begin{equation}
+    dP=|\psi(q,t)|^2dq
+\end{equation}
+Per una particella libera si può dare un'interpretazione sotto forma di ampiezza di probabilità riguardo alla sua posizione. Per la relazione di De Broglie ($p=\hbar k= h / \lambda$), mi aspetto, essendo l'impulso classicamente ben definito, un'onda piana monocromatica: 
+\begin{equation}
+    \psi_p (x) = Ce^{ipx/\hbar}
+\end{equation}
+
+E mi aspetto di poter descrivere uno stato per un sistema come quello sopra utilizzando una combinazione lineare (per la linearità):
+\begin{equation} \label{eq: 1.1.3}
+    \psi(x)=\int{\frac{dp}{2\pi \hbar}\psi_p (x) \varphi(p)}=\int{\frac{dk}{2\pi}e^{ikx}\varphi(k)}
+\end{equation}
+Volendo dare un'interpretazione probabilistica dell'ampiezza di probabilità, mi aspetto che la funzione d'onda sia normalizzabile su tutto lo spazio:
+\begin{equation}
+    \int_{-\infty}^{\infty}{|\psi(x)|^2 dx} < \infty
+\end{equation}
+Ossia viene richiesto che $\psi(x)$ appartenga a $\mathds{L}^2$. L'espressione in (\ref{eq: 1.1.3}) risulta allora essere una trasformata di Fourier della funzione d'onda.
+\\
+\\
+$|\psi(x)|^2$ $\rightarrow$ probabilità che la particella stia tra $x$ e $x+dx$.
+\\
+$|\varphi(p)|^2$ $\rightarrow$ probabilità che la particella abbia impulso tra $p$ e $p+dp$.
+\\
+\\
+Quanto sopra può essere utilizzato per calcolare i valori medi delle osservabili trattando le funzioni d'onda quadre come densità di probabilità:
+\begin{equation}
+ E_{\psi}[f]=\int{dx |\psi(x)|^2 f(x)}   
+\end{equation}
+\\
+Si può scrivere la stessa cosa nella rappresentazione delle $p$. Coerentemente col concetto di trasformata, cambia la misura dello spazio e il peso da attribuire nell'integrale (da un punto di vista intuitivo $\partial_x(\psi(x))=\frac{i}{\hbar}p\psi$):
+\begin{equation}
+    E_{\phi}[f(p)]=\int{\frac{dp}{2\pi \hbar}f(p)|\phi(p)|^2}=\int{dx \  \psi^*(x)f(x) \biggl[\frac{\hbar}{i} \ \frac{\partial}{\partial x}\biggr] \psi(x)}
+\end{equation}
+\\ 
+\\
+Si può facilmente confrontare quanto trovato con il prodotto scalare definito in $\mathds{L}^2$ per introdurre:
+\begin{equation}
+    \bra{a}\ket{b} \equiv \int{\psi_a ^* (x) \psi_b (x) dx} \ \ \ \ \ \ \ \ \bra{a}\ket{b}^*=\bra{b}\ket{a}
+\end{equation}
+Notazione Bruh-Ket.
+\\
+\\
+Le variabili classiche in MQ si traducono in operatori, con definizioni diverse a seconda della rapresentazione (base) (cfr. l'\textit{Antola-Benfatto} di Teoria dei Gruppi).
+\\ \\
+Rappresentazione delle $x$: \ \  $\hat{q}\psi(x)=x\psi(x)$ \ \ ; \ \ $\hat{p}\psi(x)=\frac{\hbar}{i}\frac{\partial}{\partial x} \psi(x)$
+\\ \\
+Rappresentazione delle $p$: \ \  $\hat{q}\phi(p)=i\hbar \frac{\partial}{\partial p} \phi(p)$ \ \ ; \ \  $\hat{p}\phi(p)=p\phi(p)$ 
+\\ \\ 
+Gli operatori vengono chiamati osservabili e i valori di aspettazione delle osservabili su uno stato si trovano secondo:
+\begin{equation}
+    \bra{\psi}\hat{A}\ket{\psi} = \int{\psi^* \hat{A}\psi}
+\end{equation}
+La richiesta che le osservabili siano reali impone che gli operatori debbano essere Autoaggiunti ($A^\dagger =A$).
+\\
+Infatti in termini di elementi di matrice risulta
+\begin{equation}
+    A_{\alpha \beta}=\bra{\alpha}A\ket{\beta}
+\end{equation}
+da cui la richiesta di Hermitianità si traduce in:
+\begin{equation}
+    A_{\alpha \beta} ^{\dagger}=A_{\beta \alpha} ^* = A_{\alpha \beta}
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Particelle Libere}
+
+Per l'ipotesi di De-Broglie una particella con impulso definito ha una lunghezza d'onda fissa e, se ha energia definita, ha una frequenza fissa:
+\begin{equation} \label{1.2.1}
+    \psi(x,t)=e^{i(kx-\omega t)}
+\end{equation}
+La (\ref{1.2.1}) non è normalizzabile ma va considerata come caso limite.
+\\
+Il luogo dei punti a fase costante è
+\begin{equation} \label{1.2.2}
+    x=\frac{\omega}{k}t \ \ \rightarrow \ \ v_f =\frac{\omega}{k}
+\end{equation}
+Dove $v_f$ viene chiamata \textbf{velocità di fase}.
+\\
+Moltiplicando la (\ref{1.2.2}) a numeratore e denominatore per $\hbar$ si ottiene 
+\begin{equation}
+    v_f=\frac{\hbar \omega}{\hbar k}=\frac{E}{p}
+\end{equation}
+che non è la velocità di propagazione di una particella libera.
+\begin{equation}
+    E=\frac{p^2}{2m} \ \ \Rightarrow \ \ v=\frac{p}{m}=\frac{2E}{p}
+\end{equation}
+Ma effettivamente la (\ref{1.2.1}) non descrive uno stato con impulso localizzato, quindi non è una descrizione buona di particella libera.
+\\ \\
+\'E necessario costruire un pacchetto d'onda:
+\begin{equation} \label{1.2.5}
+    \psi(x,t)=\int \frac{dk}{2\pi} \ e^{i(kx-\omega t)}f(k)
+\end{equation}
+La (\ref{1.2.5}) essendo localizzate è anche normalizzabile, quindi appartiene a $\mathds{L}^2$.
+\\
+Dalla relazione di De-Broglie si trova 
+\begin{equation} \label{1.2.6}
+    \omega=\hbar\frac{k^2}{2m}
+\end{equation}
+Ossia la velocità di fase dipende da $k$, ed è l'equivalente di un mezzo con indice di rifrazione variabile in ottica.
+\\
+Quello che avviene è la dispersione del pacchetto, perciò non si ha una buona descrizione di una particella.
+\\
+La velocità che descrive effettivamente quella di spostamento del pacchetto è la \textit{velocità di gruppo}
+\begin{equation}
+    v_g=\frac{\partial \omega}{\partial k}
+\end{equation}
+E sostituendovi la (\ref{1.2.6}) si trova proprio
+\begin{equation}
+    \frac{\hbar k}{m}=\frac{p}{m}
+\end{equation}
+
+\vspace{0.5cm}
+\subsection{Operatori e Misure}
+
+Affinchè si osservi uno dei valori possibili per $A$ risulta che uno stato deve essere un autostato di $A$ e il valore che si osserva è il relativo autovalore:
+\begin{equation}
+    A\ket{\psi} = a \ket{\psi}
+\end{equation}
+
+\'E perciò possibile usare un risultato di Geometria per descrivere qualsiasi stato:
+\\
+\\
+\begin{theorem}[\textbf{Th. Spettrale:}] 
+Ogni operatore autoaggiunto $A$, con spettro discreto, ammette una base
+completa di autovettori nello spazio di Hilbert $\mathcal{H}$.
+\end{theorem}
+Per questo motivo ogni vettore dello spazio $\mathcal{H}$ può essere sviluppato in una base di autovettori di $A$ con coefficienti pari alla proiezione del vettore sul rispettivo autovettore:
+\begin{equation}
+    \psi(x)=\displaystyle\sum_{n=0}^{\infty} c_n \ket{n} = \displaystyle\sum_{n=0}^{\infty} \bra{\psi}\ket{n}\ket{n}
+\end{equation}
+
+Il modo corretto di interpretare questi coefficienti è che le probabilità $p_n$ vi siano legate secondo:
+\begin{equation}
+p_n=|c_n|^2=|\bra{n}\ket{\psi}|^2 \ \ \iff \ \ \sum_{n=1}^{\infty}p_n=1
+\end{equation}
+Ossia \textit{la probabilità di misurare un certo valore è il modulo quadro dell'ampiezza di trovare lo stato $\ket{\psi}$ nell'autostato $\ket{n}$}.
+
+
+\vspace{0.5cm}
+
+\subsection{Collasso della funzione d'onda}
+Suppongo di avere uno stato $\ket{\psi}$ e di effettuare una misura su tale stato di un'osservabile $A$, ottenendo il valore $a$. Il sistema allora deve trovarsi nello stato $\ket{a}$ (se l'autovalore non è degenere, altrimenti deve trovarsi nel sottospazio generato dagli autovettori relativi all'autovalore degenere).
+\\
+Ma questo significa che, mentre prima della misura lo stato era descritto da una combinazione lineare di autovettori con proiezioni, ora deve trovarsi nel solo autovettore dell'autovalore misurato. 
+\\ 
+Questo è necessario per motivi di coerenza, altrimenti effettuare una misura in un tempo infinitamente breve successivo alla misura precedente produrrebbe un valore diverso, facendo perdere senso al concetto stesso di misura.
+\\
+\begin{equation}
+    \ket{\psi}=\displaystyle\sum_{n=0}^{\infty} \bra{\psi}\ket{n}\ket{n} \rightarrow \text{Azione di A} \rightarrow \ket{k}
+\end{equation}
+\\
+Il significato dell'azione di un'osservabile sul sistema è quindi quello di effettuarne una proiezione sul sottospazio (D-dimensionale) generato dall'autovettore corrispondente al valore misurato (o dai D autovettori corrispondenti).
+
+
+
+\subsection{Spettro Continuo}
+Molti operatori, a partire dall'impulso, non hanno uno spettro discreto, ma uno spettro continuo, caratterizzato da infiniti autovalori.
+\\
+Infatti
+\begin{equation}
+    \frac{\hbar}{i}\frac{\partial}{\partial x}\psi(x)=p\psi(x) 
+\end{equation}
+che ammette come sola soluzione
+\begin{equation}
+    \psi(x)= e^{ipx/\hbar}
+\end{equation}
+che non appartiene a $\mathds{L}^2$.
+\\
+\\
+In questo caso la decomposizione spettrale degli stati prende la forma:
+\begin{equation}
+    \ket{\psi}=\int{\frac{d\alpha}{N}c(\alpha)\ket{\alpha}}
+\end{equation}
+dove $c(\alpha)$ mantiene il ruolo di proiezione e $N$ è un coefficiente di normalizzazione.
+\\
+A differenza del caso finito ora non può essere il quadrato delle proiezioni a dare la probabilità di trovare il sistema in un dato autostato, perchè non ha senso pensare di avere un sistema in un dato valore in un continuo. Ma bisogna parlare della probabilità di avere il sistema in un dato intervallo [$\alpha$,$\alpha+d\alpha$]. Questa risulta data da:
+\begin{equation}
+    dP_{\alpha}=|c(\alpha)|^2 \frac{d\alpha}{N}
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Osservabili compatibili}
+Date due osservabili $A$,$B$, quando è possibile osservare la prima nello stato $a$ e la seconda nello stato $b$?
+\\
+La domanda equivale a cercare un autostato che sia autovettore contemporaneo delle due.
+
+\begin{theorem}Se due operatori autoaggiunti A e B commutano è sempre possibile trovare una base comune di
+autovettori nello spazio di Hilbert.
+\end{theorem}
+Per ogni sistema esiste un insieme massimale di osservabili compatibili, ossia un insieme di osservabili tutte commutanti tra loro tali che i loro autovettori contemporanei siano determinati univocamente senza degenerazione.
+\\
+Ossia l'insieme delle osservabili deve essere abbastanza ampio da permettere di determinare una base dello spazio di Hilbert.
+
+\vspace{0.5cm}
+
+\subsection{Principio di Heisenberg}
+Si dimostra agevolmente in una qualunque rappresentazione che in qualsiasi dimensione risulta:
+\begin{equation}
+    [\hat{P_i},\hat{Q_j}]=\frac{\hbar}{i} \delta_{ij}
+\end{equation}
+\\
+Ossia, la posizione e l'impulso non sono osservabili compatibili.\\
+Vale anzi:
+\begin{equation}\label{indeterminazione}
+    \Delta P \Delta Q \geq \frac{\hbar}{2}
+\end{equation}
+
+Ci sono numerose dimostrazioni della (\ref{indeterminazione}) e altrettanti argomenti logici qualitativi.
+\\
+Nel seguito viene presentata una dimostrazione basata sull'interpretazione ondulatoria della materia, tramite funzioni d'onda. Altre dimostrazioni ovviamente possono basarsi sull'interpretazione corpuscolare.
+
+\begin{proof}
+Lo scarto quadratico medio per la posizione e per l'impulso è definito come:
+\begin{equation}
+    \begin{split}
+        \Delta x^2=\overline{x^2}-\overline{x}^2\equiv \overline{(x-\overline{x})^2} \\
+        \Delta p^2=\overline{p^2}-\overline{p}^2\equiv \overline{(p-\overline{p})^2}
+    \end{split}
+\end{equation}
+\'E sempre possibile effettuare un cambio di sistema di riferimento e una traslazione in maniera tale che $\overline{x}=0$ e $\overline{p}=0$.
+\\
+Gli scarti quadratici sono invarianti per questa operazione, ma ora risulta:
+\begin{equation}
+    \Delta x^2=\overline{x^2} \ \ \ \ ; \ \ \ \ \Delta p^2=\overline{p^2}
+\end{equation}
+Si considera ora per $\alpha \in \mathds{R}$ l'identità
+\begin{equation}\label{2.7.5}
+    \int dx \left| \alpha x \psi + \frac{\partial}{\partial x}\psi \right|^2 \ge 0
+\end{equation}
+che sviluppando diviene
+\begin{equation}
+    \alpha^2\int x^2 |\psi|^2 dx + \alpha \int dx (x\psi^* \partial_x \psi + x\psi \partial_x \psi^*)+\int |\partial_x \psi|^2 dx
+\end{equation}
+dove il primo e l'ultimo integrale sono la media di $x^2$ e di $p^2/\hbar^2$. Il secondo integrale può essere fatto per parti, trovando:
+\begin{equation}
+    \int dx x \partial_x (\psi^* \psi)=-\int dx |\psi|^2 =-1
+\end{equation}
+La disuguaglianza (\ref{2.7.5}) implica allora
+\begin{equation}
+    \overline{x^2}\alpha^2 - \alpha +\frac{\overline{p^2}}{\hbar^2}\ge 0
+\end{equation}
+La condizione che non sia negativa $\forall \alpha$ impone di avere un discriminante negativo, ossia
+\begin{equation}
+    1-4\Delta x^2 \Delta p^2 /\hbar^2 \le 0
+\end{equation}
+Ossia
+\begin{equation}
+    \Delta x \Delta p \ge \frac{\hbar}{2}
+\end{equation}
+\end{proof}
+
+
+\begin{tikzpicture}
+\node [mybox] (box){
+    \begin{minipage}{\textwidth}
+\textbf{Also Sprach Heisenberg:}\textit{ [...] si supponga di sapere precisamente la velocità di un elettrone libero, mentre la posizione è completamente ignota. Allora il principio dice che ogni seguente osservazione della posizione altererà la quantità di moto di un valore sconosciuto e indeterminabile, tale che dopo aver fatto l'esperimento la nostra conoscenza del moto elettronico è ristretta dal principio di indeterminazione.
+\\
+Questa formulazione rende chiaro che la relazione di incertezza non si riferisce al passato; se la velocità dell'elettrone è inizialmente nota e la posizione poi misurata esattamente, si può calcolare la posizione per tempi precedenti alla misura.
+\\
+Per questi tempi nel passato $\Delta p \Delta q$ è minore del solito valore limite, ma tale conoscenza del passato è di carattere puramente speculativo, dal momento che non può essere usata come condizione iniziale per alcun calcolo di evoluzione futura dell'elettrone (per via dell'ignota variazione della quantità di moto causata dalla misura di posizione) e quindi non può essere soggetta a verifica sperimentale.
+}
+    \end{minipage}
+};
+\end{tikzpicture}
+
+
+
+\newpage
+
+\section{Equazione di Schr\"odinger ed evoluzione temporale}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{eraclito.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{8mm}
+\epigraph{Questo mondo non è stato fatto da alcun Dio nè uomo, ma è sempre stato e sempre sarà un fuoco immortale.}{\textit{Eraclito, 544-484 a.c.}}
+\vspace{8mm}
+
+
+Andando a studiare l'evoluzione temporale di un pacchetto d'onda si scopre che diviene possibile scrivere un'equazione d'onda funzione della posizione e del tempo:
+\begin{equation}
+    \Psi(x,t)=\int{\frac{dp}{2\pi \hbar}\phi(p)e^{ipx/\hbar}e^{-\frac{i}{\hbar}\frac{p^2}{2m}t}}
+\end{equation}
+Derivando rispetto a x e t ci si rende conto che vale:
+\begin{equation}
+    i\hbar\frac{\partial}{\partial t}\Psi=-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x ^2}\Psi
+\end{equation}
+A dx si trova l'operatore energia cinetica: $\hat{T}=\frac{\hat{p}^2}{2m}=-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x ^2}$.
+Se invece ci si riduce a un'onda piana con E=$\hbar \omega$, risulta:
+\begin{equation}
+    \Psi(x,t)=\psi(x)e^{-i\omega t} \;\;  ; \;\; -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x ^2}\psi=E\psi
+\end{equation}
+Per la linearità della MQ considerare casi monocromatici garantisce di coprire tutta la teoria.
+\\
+Come mi aspetterei classicamente, per una particella libera l'energia cinetica seleziona l'energia totale. Si può estendere nel caso di un potenziale costante come:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x ^2}\psi=(E-V_0)\psi
+\end{equation}
+E facendo un ulteriore salto logico effettuo un'estensione per potenziali generici, trovando l'Equazione di Schr\"odinger:
+\begin{equation} \label{2.0.5}
+  -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x ^2}\psi(x) + V(x)\psi(x)=E\psi(x)
+\end{equation}
+A sx si ha l'operatore Hamiltoniana:
+\begin{equation}
+    H\psi=E\psi
+\end{equation}
+Ossia, l'energia di una particella (o, per estensione, di un sistema) è autovalore dell'Hamiltoniana.
+\\
+Per il \textit{Th. Spettrale} esiste allora un insieme completo di autostati dell'Hamiltoniana $\psi_E (t)$, per cui posso scrivere uno stato generico come:
+\begin{equation}
+    \psi (x) =\displaystyle\sum_{n=0}^{\infty} c_n \psi_n (x) \ \ \rightarrow \ \ \Psi(x,t)=\displaystyle\sum_{n=0}^{\infty} c_n e^{-iE_n t/\hbar} \psi_n (x)
+\end{equation}
+L'ultima equazione soddisfa:
+\begin{equation} \label{2.0.8}
+    H\Psi=i\hbar \frac{\partial}{\partial t}\Psi
+\end{equation}
+Che è una riformulazione dell'Equazione di Schr\"odinger (\ref{2.0.5}).
+\\
+\subsection{Evoluzione temporale}
+Quanto visto sopra indica che l'evoluzione temporale è regolata dall'operatore Hamiltoniana, vettorialmente:
+\begin{equation}
+    i\hbar\frac{\partial}{\partial t}\ket{\psi_t}=H\ket{\psi_t}
+\end{equation}
+Chiamando $E_n , f_n$ autovalori e autovettori di H ($Hf_n = E_n f_n$) si può usare questa base per scrivere in serie di Fourier uno stato qualsiasi $\psi(x,t)$:
+\begin{equation}
+    \psi(x,t)=\displaystyle\sum_{n=0}^{\infty} c_n (t)f_n (x)
+\end{equation}
+Eguagliando quanto trovato all'equazione di Schr\"odinger (\ref{2.0.8}) ed integrando, si trova per i coefficienti:
+\begin{equation}
+ i\hbar \frac{d}{dt}c_n (t)=E_n c_n (t)   \ \ \rightarrow \ \  c_n (t)=c_n (0) e^{-i E_n t/\hbar} \ \ \rightarrow \ \  \psi (x,t)=\displaystyle\sum_{n=0}^{\infty} c_n (0) e^{-i E_n t/\hbar} f_n (x)
+\end{equation}
+Ossia, gli autostati di $H$ evolvono tramite un cambiamento di fase ed inoltre l'evoluzione temporale del sistema è univocamente determinata dalla conoscenza di $f_n (x=0)$.
+
+\vspace{0.5cm}
+
+\subsection{Operatore di evoluzione temporale}
+Dal momento che nella base degli autovettori di $H$ (indicati con $\ket{n}$) le funzioni evolvono secondo:
+\begin{equation}
+    \ket{\psi}_t = \displaystyle\sum_{n=0}^{\infty} c_n e^{-iE_n t/\hbar}\ket{n}
+\end{equation}
+si introduce l'operatore:
+\begin{equation}
+    U(t)=e^{-iHt/\hbar}
+\end{equation}
+tale da comportarsi sugli autostati di $H$, e quindi sulla serie di Fourier in quella base di un qualsiasi stato, secondo:
+\begin{equation}
+    U(t)\ket{n}=e^{-iHt/\hbar} \ket{n} \ \ \rightarrow \ \ \ket{\psi}_t = U(t)\ket{\psi}
+\end{equation}
+Essendo $U$ unitario, l'evoluzione temporale non è altro che una trasformazione unitaria dello stato iniziale.
+
+\vspace{0.5cm}
+
+\subsection{Stati stazionari}
+Per le soluzioni dell'equazione di Schr\"odinger a energia definita ($H\psi(x) = E\psi(x)$) corrisponde un'evoluzione temporale:
+\begin{equation}
+    \psi_E (x,t)=\psi_E (x,0)e^{-iEt/\hbar}
+\end{equation}
+che corrisponde alla moltiplicazione di una fase dipendente solo dal tempo. Conseguentemente effettuando il valor medio di qualsiasi osservabile su questi stati si annulla la dipendenza temporale e si ottiene sempre lo stesso risultato:
+\begin{equation}
+    \bra{\psi_E (x,t)}A\ket{\psi_E (x,t)}=\bra{\psi_E (x,0)}A\ket{\psi_E (x,0)}
+\end{equation}
+Inoltre la moltiplicazione di una fase globale non cambia il raggio all'interno dello spazio di Hilbert per uno stato e conseguentemente non cambia la distribuzione di probabilità per le osservabili:
+\begin{equation}
+    p_n (t) = |\bra{n}\ket{\psi_E (t)}|^2=|\bra{n}\ket{\psi_E (0)}|^2=p_n (0)
+\end{equation}
+
+
+\subsection{Rappresentazione di Heisenberg}
+Il punto di vista adottato finora è detto \textit{Rappresentazione di Schr\"odinger} ed è caratterizzato dal fatto che ad effettuare l'evoluzione temporale sono gli stati.\\
+Più similmente a quanto avviene in meccanica classica però si può supporre che ad effettuare l'evoluzione temporale siano le osservabili, secondo quella che viene chiamata \textit{Rappresentazione di Heisenberg}.\\
+Considerando un generico elemento di matrice infatti:
+\begin{equation}
+    A_{\alpha \beta}(t)=\bra{\alpha (t)}A\ket{\beta (t)}=\bra{\alpha (0)}e^{iHt/\hbar}Ae^{-iHt/\hbar}\ket{\beta} \ \ \rightarrow \ \ A_H (t) = e^{iHt/\hbar}Ae^{-iHt/\hbar}
+\end{equation}
+
+In quest'ottica si recupera il concetto classico di Hamiltoniana come generatore dell'evoluzione temporale. Effettuando la derivata di un'osservabile in questa rappresentazione si ritrova infatti un'espressione equivalente a quella classica con la sostituzione delle parentesi di Poisson con i commutatori:
+\begin{equation} \label{2.4.2}
+    \frac{dA_H}{dt}=\frac{\partial A_H}{\partial t} + \frac{i}{\hbar}[H,A_H] \ \ \ \text{, dove} \ \ \ \frac{\partial A_H}{\partial t}=e^{iHt/\hbar}\frac{\partial A}{\partial t}e^{-iHt/\hbar}
+\end{equation}
+Ossia la derivata parziale del trasformato temporale di uno stato è il trasformato della derivata parziale.
+\\
+\\
+Quanto trovato reca seco la possibilità di riscrivere le equazioni di Hamilton in Meccanica Quantistica (salto ovviamente i conti coi commutatori):
+\begin{equation}
+    \frac{dP}{dt}=-\frac{\partial V(Q)}{\partial Q} \ \ \ \text{;} \ \ \ \frac{dQ}{dt}=\frac{P}{m}
+\end{equation}
+Risulta sempre $[P_i (t), Q_j (t)]=\hbar/i \ \delta_{i j}$.
+
+\vspace{0.5cm}
+
+\subsection{Teorema di Hellmann-Feynman}
+
+Si consideri un'Hamiltoniana dipendente da un parametro, $H(\lambda)$. Gli autovalori risultano dipendere da $\lambda$.
+Si denota con $\psi(\lambda)$ l'autostato relativo all'autovalore dipendente dal parametro.
+\\
+Allora il teorema afferma:
+\begin{equation} \label{3.0.1}
+    \frac{\partial E_n (\lambda)}{\partial \lambda}=\bra{\psi(\lambda)} \frac{\partial H(\lambda)}{\partial \lambda}\ket{\psi(\lambda)}
+\end{equation}
+\\ \\
+Nel caso di una perturbazione, $H(\lambda)=H_0 + V(\lambda)$, con $V(\lambda)=\lambda V_0$:
+\begin{equation}
+    \frac{\partial E_n}{\partial \lambda}=\bra{\psi_n}V_0\ket{\psi_n}
+\end{equation}
+ossia, la variazione al primo ordine dell'autovalore vale:
+\begin{equation}
+    \delta E_n=\lambda \bra{\psi_n}V_0\ket{\psi_n}=\bra{\psi}V(\lambda)\ket{\psi_n}
+\end{equation}
+\\
+\textit{"La variazione dell’energia è semplicemente il valor medio della perturbazione
+sullo stato imperturbato"} 
+
+\vspace{0.5cm}
+
+\subsection{Evoluzione temporale e probabilità}
+Se si è preparato un sistema con stato iniziale $\ket{\psi_0}$, qual è la probabilità, dopo un tempo $t$, di trovare il sistema in un autostato di un'osservabile $A$ con autovalore $a_1$?
+\\
+\\
+In rappresentazione di Schr\"odinger tale probabilità è $\textit{P}=|\textit{A}|^2$, con $\textit{A}=\bra{a_1}U(t)\ket{\psi_0}$
+\\
+\\
+In rappresentazione di Heisenberg sono le osservabili ad evolvere, per cui 
+\begin{equation}
+A_H(t)=U^{\dagger}(t)AU(t)
+\end{equation}
+ $A_H$ ha gli stessi autovalori di $A$, ma ha autovettori diversi che denoto con:
+ \begin{equation}
+ \ket{a_1, t} \ \ \text{, tali che} \ \ A_H \ket{a_1,t}=a_1 \ket{a_1,t}.
+\end{equation}
+Questi autostati risultano essere: 
+\begin{equation}
+\ket{a_1,t}=U^{\dagger}(t)\ket{a_1}
+\end{equation}
+da cui trovo come ampiezza 
+\begin{equation}
+A=\bra{U^{\dagger}a_1}\ket{\psi_0}=\bra{a_1,t}\ket{\psi_0}
+\end{equation}
+Perciò l'ampiezza risulta essere la proiezione dello stato sull'autostato al tempo $t$.
+
+
+\newpage
+
+\section{Studio delle soluzioni dell'equazione di Schr\"odinger}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{parmenide.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{12mm}
+\epigraph{Dal nulla non si crea nulla.}{\textit{Parmenide, 541-450 a.c.}}
+\vspace{12mm}
+
+Si considera il problema stazionario 1-D descritto dall'equazione (\ref{2.0.5}):
+\begin{equation}
+    -\frac{\hbar ^2}{2m}\psi''(x) + V(x)\psi(x)=E\psi(x) 
+\end{equation}
+che è un'equazione lineare e omogenea e, qualora vengano specificate le condizioni iniziali sulla funzione e sulla derivata, diviene un problema di Cauchy con soluzione unica. Cioè, se esistono degli zeri, sono zeri semplici.
+\\
+Le soluzioni $\mathds{L}^2$ di questo problema vengono chiamate \textit{stati legati}. \\
+Le altre soluzioni invece si comportano in maniera esponenziale all'infinito e la loro ampiezza di probabilità non risulta normalizzabile.
+\\ \\
+Rigirando l'equazione è possibile studiare la natura delle soluzioni al problema agli autovalori:
+\begin{equation}
+    \psi''=\frac{2m}{\hbar ^2}(V-E)\psi
+\end{equation}
+
+Le zone con $E>V$ sono dette \textit{classicamente permesse}, quelle con $E<V$ \textit{classicamente proibite}:
+\\
+La concavità ha lo stesso segno della funzione nelle zone proibite e segno opposto in quelle permesse.
+Conseguentemente nelle zone proibite si ha un andamento monotono (divergente), mentre in quelle permesse si ha un andamento oscillante.
+\\
+A E fissata si hanno 2 tipi di comportamenti asintotici:
+\begin{itemize}
+    \item La zona asintotica è proibita, le soluzioni sono del tipo $e^{\pm|k|x}$
+    \item La zona asintotica è permessa, le soluzioni sono del tipo $e^{\pm ikx}$
+\end{itemize}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{soluzioni generiche schr.JPG}
+\caption{(a) caso $E>V$ , (b) caso $E<V$}
+\label{schr}
+\end{figure}
+
+Se si considera un potenziale come quello in Figura \ref{pot}, si possono studiare diversi regimi che mostrano differenti tipo di spettro.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{pot stati legati.JPG}
+\caption{Potenziale asintoticamente costante}
+\label{pot}
+\end{figure}
+
+\begin{itemize}
+    \item \underline{$E>E_A$}
+    \\
+    La soluzione a sinistra è somma di due esponenziali
+    \begin{equation} \label{4.0.3}
+        a_1 e^{-\alpha |x|}+a_2 e^{\alpha |x|}
+    \end{equation}
+    Ma per stare in $\mathds{L}^2$ si deve avere $a_2=0$.
+    \\
+    A destra la funzione è dello stesso tipo,
+    \begin{equation} \label{4.0.4}
+        c_1 e^{-\beta |x|}+c_2 e^{\beta |x|}
+    \end{equation}
+    ma è positiva, perciò dall'equazione di Schr\"odinger risulta che anche $\psi''$ è positiva, perciò ha concavità verso l'alto.
+    \\
+    In questo caso però la funzione divergerebbe e non potrebbe appartenere a $\mathds{L}^2$.
+    \\
+    Perciò in questa regione non c'è soluzione.
+    \item \underline{$E_A<E<0$}
+    \\
+    A sinistra vale ancora la (\ref{4.0.3}) e la condizione $a_2=0$.
+    Per via delle condizioni al contorno, se la soluzione esiste, è unica (è un problema di Cauchy).
+    \\
+    La soluzione a destra è ancora della forma (\ref{4.0.4}), ma ora i coefficienti $c_i$ dipendono dall'energia. Perciò sono accettabili soluzioni tali che $c_2(E_n)=0$ e gli stati con autovalore $E_n$ sono gli stati legati.
+    \item \underline{$0<E<E_B$}
+    \\
+    A sinistra la soluzione resta limitata come nei due casi precedenti, ma ora a destra la soluzione oscilla:
+    \begin{equation}
+        c_1e^{-ikx}+c_2e^{ikx}
+    \end{equation}
+    ed entrambe le soluzioni scritte sono accettabili e linearmente indipendenti.
+    \\
+    Si ha uno spettro continuo con degenerazione 2.
+    \item \underline{$E>E_B$}
+    \\
+    La soluzione a sinistra oscilla:
+    \begin{equation}
+        a_1e^{-ikx}+a_2e^{ikx}
+    \end{equation}
+    ed entrambe sono accettabili, per cui si ha uno spettro continuo con degenerazione 2.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsection{Wronskiano}
+
+Riscrivo $-\frac{\hbar ^2}{2m}\psi'' + V_1(x)\psi=E\psi $, ponendo: $\frac{2m}{\hbar ^2}V_1(x)=V \ \ ; \ \ \frac{2m}{\hbar ^2}E=\epsilon \ \ ; \ \ \psi \rightarrow y$.
+\begin{equation}
+    y''+(\epsilon - V)y=0
+\end{equation}
+Suppongo di volerla risolvere in un dominio ($a_l,a_r$), eventualmente estendibile a infinito, con condizioni al contorno:
+\begin{equation}
+    y(a_l)=0 \ \ ; \ \ y'(a_l)= 1 \ \  (\text{o qualsiasi valore})
+\end{equation}
+Questo problema presenta una e una sola soluzione $\forall \epsilon$ e per la condizione al contorno tutti gli stati legati vi rientrano.
+\\
+\\
+Si definisce \textit{Wronskiano} di due soluzioni:
+\begin{equation}
+    W=y_1 ' y_2 - y_1 y_2 '
+\end{equation}
+Derivandolo e integrando tra $a$ e $b$ generici:
+\begin{equation}
+    W'=y_1 '' y_2 - y_1 y_2 ''=(\epsilon_2 - \epsilon_1)y_1 y_2 \ \ \rightarrow \ \ W(b)-W(a)=(\epsilon_2 - \epsilon_1)\int_{a}^{b}y_1 y_2 \ dx
+\end{equation}
+\\
+Considero ora due soluzioni con energia vicina $\epsilon_2=\epsilon_1 + \delta \epsilon$ e integro da $a_l$ (che è uno zero di entrambe le $y$) fino a $x=\xi$, dove $\xi$ è uno zero di $y_1 (x)$:
+\begin{equation}
+    y_1 ' (\xi) y_2 (\xi) = \delta \epsilon \int_{a_l}^{\xi}y_1 ^2 \ dx > 0
+\end{equation}
+Perciò se $y_1$ si annulla partendo da valori negativi ($y_1 ' > 0$), allora $y_2 (\xi) > 0$ e viceversa se si annulla da valori positivi.
+\\ \\
+Perciò la posizione degli zeri si sposta verso sinistra all'aumentare dell'energia. 
+\\
+\\
+Se considero l'energia inizialmente a $-\infty$, al suo aumentare vedrò la comparsa di uno stato con un nodo a $x=+\infty$. All'aumentare di E questo nodo si sposta verso sinistra fino a portarsi al finito. A questo punto può comparire un'altro stato all'infinito che possiede un nodo al finito (lo zero precedente che si è spostato). E così via.
+\\
+Ne consegue che lo stato n-esimo ha $n-1$ nodi e che il numero di stati legati equivale al numero di soluzioni dell'equazione di Schr\"odinger con $E=0$.
+
+\vspace{0.5cm}
+
+\subsection{Riflessione e Trasmissione della fdo}
+In un potenziale generico, oltre agli stati legati, esistono autostati dello spettro continuo.
+\\
+Considero potenziali che si annullino a infinito. 
+Per $|x|$ abbastanza grandi, la particella si comporta come se fosse libera, con $E=\frac{\hbar ^2 k^2}{2m}$, da cui si trova come equazione di Schr\"odinger:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\psi''=\frac{\hbar ^2 k^2}{2m}\psi
+\end{equation}
+che ha come soluzioni $e^{\pm ikx}$.
+\\ \\
+Questa situazione è analoga ad un processo di scattering, in cui un proiettile libero subisce un'interazione per poi tornare ad essere libero.
+\\ \\
+In questo schema mentale si suppone di avere k (e quindi E) fissato e di avere un proiettile incidente da:
+\begin{itemize}
+    \item \textbf{Sinistra}: il proiettile è descritto da $e^{ikx}$ e quando "urta" il potenziale può essere riflesso oppure attraversarlo.
+    Queste due possibilità corrispondono a due ampiezze di probabilità, per cui la soluzione a destra è asintoticamente:
+    \begin{equation}
+       \psi^R = \left \{ \begin{array}{rl}
+            e^{ikx}+Re^{-ikx} \ : \ x \rightarrow -\infty\\
+         Te^{ikx} \ : \ x \rightarrow +\infty
+        \end{array}
+    \right. 
+    \end{equation}
+    \item\textbf{Destra}: La situazione è come sopra, con i cambiamenti del caso. La soluzione a sinistra è asintoticamente:
+    \begin{equation}
+        \psi^L =\left \{ \begin{array}{rl}
+            T_1 e^{-ikx} \ : \ x \rightarrow -\infty\\
+         e^{-ikx}+R_1 e^{ikx} \ : \ x \rightarrow +\infty
+        \end{array}
+    \right.
+    \end{equation}
+\end{itemize}
+
+$\psi^L$ e $\psi^R$ sono linearmente indipendenti e hanno la stessa energia, quindi costituiscono una base di autovettori di $H$.
+\\
+Avendo scelto di normalizzare a 1 l'onda incidente, risulta che $|R|^2$ e $|T|^2$ sono le ampiezze di probabilità che l'onda sia riflessa o trasmessa.
+\\
+Per via dei criteri sulle soluzioni delle equazioni di Cauchy, imposte delle condizioni iniziali, le soluzioni scritte esistono sempre.
+\\
+Se per esempio ci si pone nel caso da sinistra (mettendo all'equazione di Schr\"odinger le corrette condizioni iniziali), la soluzione asintotica a destra, mancando il potenziale, deve necessariamente essere la sovrapposizione di onde indicata sopra.
+
+\vspace{0.5cm}
+
+\subsection{Effetto Tunnel}
+Si riprenda in esame il caso dell'onda da sinistra.
+\\
+Come si è detto sopra, la soluzione asintotica fornita esiste sempre, per cui c'è sempre trasmissione attraverso una barriera di potenziale.
+\\ \\
+C'è \textit{sempre} trasmissione \textit{attraverso} una barriera di potenziale.
+\\ \\ 
+Questo fenomeno è vietato in meccanica classica ed è noto come "Effetto Tunnel".
+\\
+Dato che in questo processo non ci sono perdite, risulta $|R|^2+|T|^2=1$ per qualunque tipo di potenziale.
+
+\vspace{0.5cm}
+
+\subsection{Evoluzione temporale negli urti}
+Per ogni stato il comportamento asintotico è una sovrapposizione di quanto visto per il caso dell'onda piana:
+\begin{equation}
+    \int\frac{dk}{2\pi}e^{ikx}f(k)+\int\frac{dk}{2\pi}R(k)e^{-ikx}f(k) \leftarrow \Psi(x) \rightarrow \int\frac{dk}{2\pi}T(k)e^{ikx}f(k)
+\end{equation}
+Se lo spettro energetico è continuo e $E(k)=\hbar \omega(k)$, l'evoluzione temporale è semplicemente:
+\begin{equation}
+    \int\frac{dk}{2\pi}e^{ikx-i\omega(k)t}f(k)+\int\frac{dk}{2\pi}R(k)e^{-ikx-i\omega(k)t}f(k) \leftarrow \Psi(x,t) \rightarrow \int\frac{dk}{2\pi}T(k)e^{ikx-i\omega(k)t}f(k)
+\end{equation}
+Per avere coerenza con il processo di scattering vorrei che nel passato questo descrivesse un proiettile incidente, a $t\sim 0$ descrivesse un pacchetto d'onda che urta il potenziale e nel futuro descrivesse due distribuzioni di probabilità che si muovono a dx e sx.
+\\ 
+La localizzazione del pacchetto è data dalla condizione di stazionarietà della fase:
+\begin{itemize}
+    \item A sinistra per il primo termine la condizione è: $\frac{\partial}{\partial k}(kx-\omega t)=0 \ \ \rightarrow \ \ x=\frac{\partial \omega}{\partial k}t=v_g t$ , valida nella zona per $x \rightarrow -\infty$, ossia valido per $t\rightarrow-\infty$ ($v_g > 0$). \\
+    Per il secondo termine è $\frac{\partial}{\partial k}(-kx-\omega t)=0 \ \rightarrow \ -x=\frac{\partial \omega}{\partial k}t=v_g t$ , valida ancora nella zona $x << 0$, ossia $t\rightarrow +\infty$.
+    \item A destra per il primo termine si ha nuovamente $\frac{\partial}{\partial k}(kx-\omega t)=0 \ \ \rightarrow \ \ x=\frac{\partial \omega}{\partial k}t=v_g t$ , valida stavolta nella zona $x \rightarrow +\infty$, ossia $t\rightarrow +\infty$.
+\end{itemize}
+Le equazioni paiono foraggiare la nostra ipotesi che questo sia analogo a un processo di scattering.
+
+\vspace{0.5cm}
+
+\subsection{Potenziale a \texorpdfstring{$\delta$}{Lg}}
+
+Suppongo un potenziale attrattivo $V(x)=B\delta(x)$, con $B<0$.
+\\
+Considero l'equazione di Schr\"odinger e suppongo la sua soluzione, $\psi$, continua. L'integrazione della soluzione stessa in un intorno di un $x_0$ qualunque fornisce condizioni sulla regolarità della funzione d'onda:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\psi'' +V(x)\psi=E\psi \ \ \rightarrow \ \  \frac{\hbar^2}{2m}(\psi'(x_0-\epsilon)-\psi'(x_0+\epsilon)) +\int_{x_0-\epsilon}^{x_0+\epsilon}V(x)\psi(x) \ dx= \int_{x_0-\epsilon}^{x_0+\epsilon}E\psi(x) \ dx 
+\end{equation}
+Prendendo il limite per $\epsilon \rightarrow 0$ si trova come condizione la continuità della derivata prima della funzione d'onda tutte le volte che si ha un potenziale regolare.
+\\
+La presenza della $\delta$ invece fornisce una discontinuità sulla derivata (un salto di ampiezza B fissata):
+\begin{equation}
+    \frac{\hbar^2}{2m}(\psi'(x_0 ^-)-\psi'(x_0 ^+)) + B\psi(x_0)=0
+\end{equation}
+\\
+\textbf{Vado ora ad effettuare uno studio degli stati legati del sistema:}
+\\
+Pongo $B=-g$ e vado ad effettuare delle sostituzioni che rendano dimensionalmente omogeneo il problema:
+\begin{equation}
+    E=-\frac{\hbar^2}{2m}\alpha \ \ ; \ \ g=\frac{\hbar^2}{2m}\beta
+\end{equation}
+Per $x\neq0$ l'equazione di Schr\"odinger si riduce a 
+\begin{equation}
+    \psi''=\alpha^2\psi
+\end{equation}
+che ammette come soluzione $L^2$: $\psi=Ae^{-\alpha|x|}$, con $\alpha$ (l'energia) non ancora determinata.
+\\
+Impongo ora la condizione sulla derivata:
+\begin{equation}
+     \psi'(x_0 ^-)-\psi'(x_0 ^+)=\beta\psi(0) \ \Rightarrow \ \alpha=\beta
+\end{equation}
+Vado a imporre la normalizzazione per la soluzione trovata:
+\begin{equation}
+    \int_{-\infty}^{+\infty} A^2e^{-2\beta|x|}dx=1=2A^2\int_{0}^{+\infty}e^{-2\beta x}dx \ \Rightarrow \ A=\sqrt{\beta}
+\end{equation}
+
+Perciò il sistema ammette come soluzione una funzione d'onda con stato legato
+\begin{equation}
+    \psi(x)=\sqrt{\beta}e^{-\beta|x|} \ \ ; \ \ E=-\frac{\hbar^2}{2m}\beta^2
+\end{equation}
+
+\noindent
+\textbf{Passo a studiare gli stati del continuo:}
+\\
+L'energia è $E=\frac{\hbar^2}{2m}k^2$ e bisogna imporre la continuità su $\psi$ e sulla derivata prima per $\psi^R$ e $\psi^L$.
+\\
+Considero $\psi^R$, le condizioni si tramutano in:
+\begin{equation}
+    1+R=T \ \ \ \  \text{Continuità} \ \ ; \ \ \frac{1}{2}ik(T-(1-R))=-\beta T \ \ \ \ \text{Salto derivata}
+\end{equation}
+Da queste si ottiene:
+\begin{equation}
+    T=\frac{1}{1-i\frac{\beta}{k}} \ \ ; \ \ R=\frac{i\beta/k}{1-i\frac{\beta}{k}}
+\end{equation}
+Si ritrova il limite atteso $|T|^2 \rightarrow 1$ per $k \rightarrow \infty$.
+\\
+\\
+\'E possibile effettuare uno studio della soluzione a questo problema.
+\\
+Si introduce la funzione:
+\begin{equation}
+    F(k)=\frac{1}{1+i\frac{k}{\beta}}
+\end{equation}
+Da cui è possibile riscrivere T ed R come:
+\begin{equation}
+    R=-F(k) \ \ ; \ \ T=1-F(k)
+\end{equation}
+Per cui è possibile scrivere l'onda incidente da sinistra come:
+\begin{equation}
+    \psi_R (k,x) = \left \{ \begin{array}{rl}
+            e^{ikx}-F(k)e^{-ikx} \ : \ x < 0\\
+         (1-F(k))e^{ikx} \ : \ x > 0
+        \end{array}
+    \right. 
+\end{equation}
+\noindent
+E analogamente per quella da destra:
+\begin{equation}
+    \psi_L (k,x) = \left \{ \begin{array}{rl}
+            (1-F(k))e^{-ikx} \ : \ x < 0\\
+         e^{-ikx}-F(k)e^{ikx} \ : \ x > 0
+        \end{array}
+    \right. 
+\end{equation}
+Queste soluzioni risultano sovrapposizione di un'onda piana e di una sferica divergente. 
+\begin{equation}
+    \begin{split}
+        \psi_R (k,x)=e^{ikx}-F(k)e^{ik|x|} \\
+        \psi_L (k,x)=e^{-ikx}-F(k)e^{ik|x|}
+    \end{split}
+\end{equation}
+\\
+Per ogni valore di $E=\frac{\hbar^2 k^2}{2m}$ si trovano due soluzioni indipendenti, da cui \textit{ogni livello continuo è due volte degenere}.
+\\
+Le soluzioni sinistra e destra non sono autostati della parità, ma è possibile prenderene due combinazioni, una pari e una dispari.
+Si osserva in questo caso che la funzione d'onda dispari non risente della presenza della $\delta (x)$.
+\begin{equation}
+    \begin{split}
+        \phi_{+}(k,x)=\frac{1}{\sqrt{2}}(\psi_R (k,x) + \psi_L (k,x))=\sqrt{2}(cos(kx)-F(k)e^{ik|x|}) \\
+        \phi_{-} (k,x)=\frac{1}{\sqrt{2}}(\psi_R (k,x) - \psi_L (k,x))=\sqrt{2}sin(kx)
+    \end{split}
+\end{equation}
+Si parla in generale di "trasparenza" della $\delta(x)$ per gli autostati dispari.
+
+\vspace{0.5cm}
+
+\subsection{Buca di Potenziale}
+Si considera una buca di larghezza 2$a$:
+\begin{equation}
+    V(x)=\left \{ \begin{array}{rl}
+            -U_0 \ \ \text{per} \ |x|<a\\
+         0 \ \ \text{per} \ |x|>a
+        \end{array}
+    \right. 
+\end{equation}
+Conviene porre il potenziale noto in funzione di un parametro che semplifichi la notazione del problema:
+\begin{equation}
+    U_0=\frac{\hbar^2}{2m}\beta^2 \ \ ; \ \ E=\frac{\hbar^2}{2m}q^2 - U_0=\frac{\hbar^2}{2m}(q^2 - \beta^2)
+\end{equation}
+Le energie negative si hanno in corrispondenza di $q < \beta$, per cui l'equazione di Schr\"odinger diviene:
+\begin{equation}
+    \left \{ \begin{array}{lr}
+           \psi''+q^2 \psi=0 \ \ \ \ \ \ \text{per} \ |x|<a \\
+         \psi''=(\beta^2 - q^2)\psi \ \ \text{per} \ |x|>a
+        \end{array}
+    \right.
+\end{equation}
+
+La parità della buca permette di risolvere il problema solo per $x>0$. Le soluzioni sono pari e dispari e nella buca sono rispettivamente $cos(qx)$ e $sin(qx)$.
+\\
+All'esterno della buca, invece, la soluzione normalizzabile è del tipo
+\begin{equation*}
+    e^{-\sqrt{\beta^2 - q^2}x}
+\end{equation*}
+La soluzione dell'equazione agli autovalori si trova imponendo la continuità della derivata logaritmica (ossia $\psi'/\psi$) in $x=a$ e si trovano per il caso pari e per quello dispari, rispettivamente:
+\begin{equation} \label{4.6.4}
+     \left \{ \begin{array}{lr}
+           q \ tan(qa)=\sqrt{\beta^2 - q^2} \\
+         cot(qa)=-\sqrt{\beta^2 - q^2}
+        \end{array}
+    \right.
+\end{equation}
+Non potendo risolverle tramite funzioni elementari, è possibile cercare una soluzione grafica.
+\\
+Le funzione in (\ref{4.6.4}) sono state plottate in unità adimensionali in Figura \ref{pari} e Figura \ref{dispari}.
+
+\newpage
+
+\begin{figure}[!h]
+\begin{minipage}[b]{8.5cm}
+\centering
+\includegraphics[width=8cm]{stati pari buca.JPG}
+\caption{Stati pari} \label{pari}
+\end{minipage}
+\ \hspace{2mm} \hspace{3mm} \
+\begin{minipage}[b]{8.5cm}
+\centering
+\includegraphics[width=7cm]{stati dispari buca.JPG}
+\caption{Stati dispari} \label{dispari}
+\end{minipage}
+\end{figure}
+
+
+Risulta chiaro che esiste \textit{sempre} almeno una soluzione pari, ossia c'è sempre almeno uno stato legato (il fondamentale), mentre il primo stato eccitato (dispari) compare per
+\begin{equation*}
+    qa=\frac{\pi}{2} \ ; \ \ q=\beta \ \ \Rightarrow \ \ \beta a =\frac{\pi}{2}
+\end{equation*}
+Il secondo stato eccitato risulta invece pari, il terzo dispari, ecc.
+
+\newpage
+
+\section{Trasformazioni Unitarie}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{zenone.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{10mm}
+\epigraph{L'uomo domina il mondo dominando sé stesso.}{\textit{Zenone, 489-431 a.c.}}
+\vspace{10mm}
+
+In uno spazio di Hilbert $\mathcal{H}$ si definisce una trasformazione unitaria come una trasformazione lineare iniettiva e surgettiva che mantiene invariati i prodotti scalari:
+\begin{equation}
+    \ket{\psi'}=U\ket{\psi} \ ; \ket{\phi'}=U\ket{\phi} \ \ \rightarrow \ \ \bra{\phi'}\ket{\psi'}=\bra{\phi}\ket{\psi} \ \ \iff \ \ U^{\dagger}=U^{-1}
+\end{equation}
+Coincide con un cambio di sistema di riferimento da una base ortonormale a un'altra sempre ortonormale.
+\\
+Tutte le ampiezze di probabilità, espresse da prodotti scalari, vengono lasciate invariate dall'azione di questi operatori.
+\\
+Vale un risultato ancora più forte:
+
+\begin{theorem}[\textbf{Th. di Wigner:}]\label{Wigner} La più generale trasformazione di
+$\mathcal{H}$ in $\mathcal{H}$ che lascia invariate le probabilità di transizione
+\begin{equation*}
+    |\bra{\phi}\ket{\psi}|^2
+\end{equation*}
+è una trasformazione unitaria, o antiunitaria.
+\end{theorem}
+
+Una trasformazione antiunitaria è una trasformazione unitaria antilineare (porta fuori il complesso coniugato delle costanti).
+
+\vspace{0.5cm}
+
+\subsection{Traslazioni e Weyl}
+Si considera lo spazio $\mathds{L}^2$
+in cui gli stati sono rappresentati dalle funzioni d'onda $\psi(x)$.
+\\
+In tale spazio le trasformazioni unitarie più importanti sono le traslazioni di coordinate e impulsi:
+\begin{equation} \begin{split}
+     T(a)\psi(x)=\psi_a (x)=\psi(x-a) \ \ \ a \in \mathds{R} \\
+     V(b)\psi(x)=\psi_b  (x)=e^{ibx/\hbar}\psi(x) \ \ \ b \in \mathds{R}
+\end{split} \end{equation}
+Valgono le \textit{regole di commutazione di Weyl}:
+\begin{equation} \label{5.1.2}
+    T(a)V(b)=e^{-iab/\hbar}V(b)T(a)
+\end{equation}
+
+
+Un importante risultato, che tra le altre cose ci assicura l'equivalenza delle 3 formulazioni della MQ citate nel primo capitolo, è il seguente:
+\\
+\\
+\begin{theorem}[\textbf{Th. di Von Neumann}:]Se in uno spazio di Hilbert
+esistono due famiglie a un parametro di trasformazioni
+unitarie T(a) e V(b) che soddisfano all’algebra di Weyl
+(\ref{5.1.2}), allora la rappresentazione di Schr\"odinger scritta
+sopra è unica, a meno di trasformazioni unitarie.
+\end{theorem}
+
+Un ulteriore teorema è quello che va a collegare trasformazioni finite e generatori infinitesimali:
+
+\begin{theorem}[\textbf{Th. di Stone}:] \label{Stone}
+Sia U(s) una famiglia di operatori
+unitari che soddisfa alle proprietà di gruppo
+\begin{equation*}
+U(s)U(t) = U(s + t) \ \ ; \ \  U(0) = 1
+\end{equation*}
+Allora esiste un operatore autoaggiunto A tale che
+\begin{equation*}
+U(s) = e^{iA s}
+\end{equation*}
+\end{theorem}
+$A$ viene appunto chiamato generatore infinitesimo della trasformazione.
+\\
+\\
+A questo punto si può proseguire in analogia con la meccanica classica definendo l'impulso come il generatore infinitesimale delle traslazioni:
+\begin{equation}
+    T(a)=e^{-iPa/\hbar}
+\end{equation}
+
+Usando ora la formula BCH (valida se [A,B] è un $\mathds{C}$-numero, ossia [A,B]=$\lambda \mathds{1}$, con $\lambda \ \in \ \mathds{C}$, altrimenti non assume una forma chiusa):
+\begin{equation}
+    e^A e^B = e^{A+B+\frac{1}{2}[A,B]}
+\end{equation}
+si può andare a vedere che le regole di Weyl riproducono quanto già noto sui commutatori:
+\begin{equation}
+    \frac{1}{2\hbar^2}[P,Q]ab=-\frac{1}{2\hbar^2}[P,Q]ab-\frac{i}{\hbar}ab \ \ \Rightarrow \ \ [P,Q]=\frac{\hbar}{i}
+\end{equation} 
+
+\'E anche possibile recuperare quanto già noto sul ruolo di generatrice dell'Hamiltoniana.
+\\
+Suppongo esista un operatore di evoluzione temporale unitario da $t_1$ a $t_2$ affinchè sia mantenuta la norma dei vettori: $U(t_2,t_1)$.
+\\
+Per $\tau$ infinitesimali, vale:
+\begin{equation}
+    U(t+\tau,t)\simeq 1 -\frac{i}{\hbar}H(t)\tau
+\end{equation}
+Applicandolo ad uno stato ed estendendo quanto detto a Hamiltoniane con possibile dipendenza temporale, si trova:
+\begin{equation}
+    \psi(t+\tau)=U(t+\tau,t)\psi(t) \simeq \psi(t) - \frac{i}{\hbar}H(t)\tau\psi(t)
+\end{equation}
+Ossia, riarrangiando quanto trovato e considerandone il rapporto incrementale per $\tau \rightarrow 0$, si trova l'equazione di Schr\"odinger (\ref{2.0.8}):
+\begin{equation}
+    i\hbar\frac{\partial}{\partial t}\psi(t)=H(t)\psi(t)
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Traslazioni di coordinate e impulsi}
+I due problemi che si intende affrontare sono formalmente :
+\begin{itemize}
+    \item Come costruire, partendo da uno stato $\psi(x)$ con impulso medio $p_0$, uno stato che abbia la stessa distribuzione di probabilità nelle coordinate ma impulso $p_0 + q$.
+    \item Come costruire, partendo da uno stato $\psi(x)$ con coordinata media $x_0$, uno stato che abbia la stessa distribuzione di probabilità ma coordinata $x_0 - a$.
+\end{itemize}
+
+Ma possono essere riformulati come:
+\begin{itemize}
+    \item Come faccio a dare una spinta al sistema senza spostarlo?
+    \item Come faccio a spostare il sistema senza dargli una spinta?
+\end{itemize}
+
+Per il primo caso basta osservare la forma di un'onda piana per intuire la soluzione:
+\begin{equation}
+    e^{ipx/\hbar} \ \ \rightarrow \ \ e^{i(p+q)x/\hbar}=e^{iqx/\hbar}e^{ipx/\hbar}
+\end{equation}
+Da cui si vede che la legge di trasformazione è:
+\begin{equation}
+    \psi_B(x)=e^{iqx/\hbar}\psi(x)
+\end{equation}
+Da cui, calcolando il valor medio sull'impulso:
+\begin{equation}
+    \bra{B}\hat{P}\ket{B}=\int dx \ \psi(x)^* e^{-iqx/\hbar} \frac{\hbar}{i}\frac{\partial}{\partial x}[e^{iqx/\hbar}\psi(x)]=\int dx \ \psi(x)^* e^{-iqx/\hbar}e^{iqx/\hbar}[q\psi(x)+\hbar/i \ \partial_x \psi(x)]=q + p_0
+\end{equation}
+si vede che era proprio quanto cercato.
+\\
+\\
+Dato che ci troviamo in rappresentazione delle coordinate, il secondo caso è quasi banale, la legge di trasformazione è:
+\begin{equation}
+    \psi_a (x)=\psi (x-a)
+\end{equation}
+Controllo effettuando il valor medio sulla coordinata (basta cambiare variabile nell'integrale):
+\begin{equation}
+    \bra{B}\hat{Q}\ket{B}=\int dx \ |\psi(x-a)|^2= \int d\xi \ |\psi(\xi)|^2 (\xi+a)=x_0 +a
+\end{equation}
+\\
+\\
+Coerentemente con quanto detto in precedenza riguardo alla rappresentazione di Heisenberg, è possibile spostare l'azione delle trasformazioni sugli operatori. Da un punto di vista pratico coincide con l'assumere che siano le osservabili a subire la trasformazione:
+\begin{equation} \begin{split}
+    \bra{\alpha}A\ket{\beta} \ \ \rightarrow \ \ \bra{\alpha'}A\ket{\beta'}=\bra{\alpha}U^{-}
+AU\ket{\beta} \\
+A \ \ \rightarrow \ \ A'=U^{-1}AU=U^{\dagger}AU
+\end{split} \end{equation}
+Questa scelta risulta utile qualora si vogliano studiare le simmetrie di un dato sistema.
+
+\vspace{0.5cm}
+
+\subsection{Simmetrie e leggi di conservazione}
+Per simmetria si intende una trasformazione che lasci invariate le leggi del moto.
+\\
+Vado a studiare esplicitamente come le simmetrie si traducano nel linguaggio delle trasformazioni unitarie visto prima:
+\begin{equation}
+  \ket{\psi'}= S\ket{\psi}  \rightarrow \text{applico H} \rightarrow i\hbar\frac{\partial}{\partial t}\ket{\psi'}=Si\hbar\frac{\partial}{\partial t}\ket{\psi}=SH\ket{\psi}=SHS^{-1}\ket{\psi'} 
+\end{equation}
+Chiaramente si possono avere le stesse leggi del moto se e solo se $H=S^{-1}HS$. Ossia se e solo se $[H,S]=0$, se $S$ commuta con l'Hamiltoniana.
+\\
+Se $S$ fa parte di un gruppo se ne può considerare il generatore infinitesimale (lo chiamo $J$) e rifrasare la condizione precedente adoperando il \textit{Th. di Stone} (\ref{Stone}). Si ottiene che la condizione diviene: $[J,H]=0$.
+\\
+Qualora $J$ non abbia dipendenza esplicita dal tempo sostituiamo quanto trovato in (\ref{2.4.2}), ottenendo:
+\begin{equation}
+    \frac{dS}{dt}=\frac{i}{\hbar}[H,S] \ \ \iff \ \ \frac{dJ}{dt}=\frac{i}{\hbar}[H,J]
+\end{equation}
+Ossia: \textit{Ad ogni simmetria del sistema corrisponde una legge di conservazione}.
+
+\vspace{0.5cm}
+
+\subsection{Invarianza per Parità}
+La parità, o inversione spaziale, è una simmetria chiamata "discreta".
+\\
+\'E definita come:
+\begin{equation}
+I:\ \psi \rightarrow \psi_I \ \ ; \ \ \psi_I (x) =\psi (-x)
+\end{equation}
+Relazione che si può rendere esplicita sia in rappresentazione di Schr\"odinger come azione sui ket, che in rappresentazione di Heisenberg come azione sugli operatori. \\
+Chiaramente $I^2=\mathds{1}$, per cui $I$ è una trasformazione sia unitaria che Hermitiana. Gli autovalori della parità sono $\eta = \pm 1$, da cui gli autostati risultano:
+\begin{equation}
+    \psi_I(x)=\eta \psi(x) \ \iff \ \psi(-x)=\pm \ \psi(x)
+\end{equation}
+Ossia sono le funzioni pari e dispari.
+\\
+\\
+\textbf{In MQ la Parità costituisce un'osservabile discreta.}
+
+\newpage
+
+\section{Metodo Variazionale}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{diogene.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{12mm}
+\epigraph{Solo un saggio può riconoscere un saggio.}{\textit{Diogene, 405-323 a.c.}}
+\vspace{12mm}
+
+L'equazione di Schr\"odinger stazionaria può essere ricavata da un principio di minimo.
+\\
+Si considera il valor medio dell'Hamiltoniana su uno stato qualunque (in numero di dimensioni arbitrarie, motivo del $\nabla$):
+\begin{equation}
+    \bra{\psi}H\ket{\psi}=\int dy \ \biggl\{ \frac{\hbar^2}{2m}|\nabla\psi(y)|^2 + V(y)|\psi(y)|^2 \biggr\}
+\end{equation}
+E vado a cercare il minimo di questo funzionale sugli stati a norma 1, implementando il vincolo con un moltiplicatore di Lagrange ($E$)
+\begin{equation}
+    \delta(\text{Funzionale} - E \cdot \text{Vincolo})=0
+\end{equation}
+Accademicamente si dovrebbe procedere a imporre la minimizzazione su parte reale e immaginaria separatamente, ma si può anzi agire su $\psi$ e $\psi^*$.
+\\
+Il vincolo è la ricerca sugli stati a norma unitaria, per cui lo scrivo come:
+\begin{equation}
+    \Lambda[\psi]=0 \ \ , \ \text{con} \ \Lambda[\psi]= \biggl(\int |\psi(y)|^2 \ dy - 1\biggr)
+\end{equation}
+Effettuando ora la variazione rispetto a $\psi^*$ si trova l'equazione per $\psi$ e viceversa. Le due equazioni risultano essere una il complesso coniugato dell'altro. Si va ora a ricavare quella per $\psi$:
+\begin{equation} \begin{split}
+    \frac{\delta}{\delta \psi^*} \biggl\{ \bra{\psi}H\ket{\psi} - E(\bra{\psi}\ket{\psi}-1)\biggr\}=0 \\
+    \Rightarrow  \ -\frac{\hbar^2}{2m}\psi''(x) +V(x)\psi(x) -E\psi(x) =0 
+\end{split} \end{equation}
+Cioè si ritrova l'equazione di Schr\"odinger (\ref{2.0.5}).
+
+\vspace{0.5cm}
+
+\subsection{Esistenza degli stati legati}
+Il metodo variazionale viene largamente usato sia per stimare le energie dei vari livelli in un sistema che, soprattutto, per stimare le condizioni di esistenza e il numero degli stati legati.
+\\
+Considero un potenziale generico $V(X)$ tale da annullarsi per $x \rightarrow \pm \infty$. Se si può inscrivervi una buca di potenziale tale che $V_B (x) \geq V(X)$, allora il sistema ammette almeno uno stato legato.
+Se infatti chiamiamo $E_0$ l'energia dello stato fondamentale del potenziale originale e $\phi(x)$ la sua funzione d'onda, usando il principio variazionale:
+\begin{equation}
+    E_0\leq \bra{\phi}(T+V)\ket{\phi}\leq\bra{\phi}(T+V_B)\ket{\phi}=E_B < 0
+\end{equation}
+Se in generale si trova una qualunque funzione d'onda tale che $\bra{\psi}H\ket{\psi}<0$, allora si ha uno stato legato, valendo, in virtù del principio di minimo, la disuguaglianza:
+\begin{equation}
+    E_{fond}\leq\bra{\psi}H\ket{\psi}<0
+\end{equation}
+
+
+Ancora più in generale se $V_1(x)\leq V_2(X)$, con corrispondenti Hamiltoniane $H_1=\frac{p^2}{2m}+V_1(x)$ e $H_2=\frac{p^2}{2m}+V_2(x)$ , allora, se $H_2$ ha $n$ stati legati, $H_1$ ha almeno $n$ stati legati.
+
+
+\subsection{Sistema a due stati}
+L'Hamiltoniana più generale per questo sistema è:
+\begin{equation}
+ H=   \begin{pmatrix} 
+   E_1 & -A \\
+   -A^* & E_2 
+\end{pmatrix}
+\end{equation}
+Dove si può sempre assumere $A \in \mathds{R}$ ($A$ rappresenta l'ampiezza di probabilità di effettuare un salto tra stati per via dell'effetto tunnel).
+\\
+Gli autovalori sono:
+\begin{equation} \label{6.2.2}
+    E=\frac{E_1 +E_2}{2}\pm\sqrt{\frac{(E_1 - E_2)^2}{4}+A^2}
+\end{equation}
+
+Chiaramente per $E_1=E_2=E_0$ questi si riducono a $E=E_0 \pm A$.
+
+\vspace{0.5cm}
+
+\subsection{Molecola di Ammoniaca}
+La molecola di $NH_3$ ha una struttura piramidale con gli idrogeni a formarne la base.
+\\
+Le posizioni di equilibrio per l'Azoto sono sopra o sotto al piano $z=0$, al vertice delle due possibili piramidi. Il potenziale corrispondente presenta due minimi ed è per questo spesso chiamato \textit{a doppia buca}.
+
+\begin{figure}[ht]
+\begin{minipage}[b]{8.5cm}
+\centering
+\includegraphics[width=7cm]{NH3 molecola.JPG}
+\caption{Posizioni di equilibrio per $NH_3$}
+\end{minipage}
+\ \hspace{2mm} \hspace{3mm} \
+\begin{minipage}[b]{8.5cm}
+\centering
+\includegraphics[width=7cm]{NH3 pot.JPG}
+\caption{Potenziale a doppia buca}
+\end{minipage}
+\end{figure}
+
+Si fanno corrispondere a queste due possibilità due stati: $\ket{\pm}$, con valore medio dell'Hamiltoniana su questi due stati pari a $E_0$.
+\\
+Scrivo l'Hamiltoniana, con autovalori e autostati:
+
+\begin{equation} 
+ H=   \begin{pmatrix} 
+   E_1 & -A \\
+   -A^* & E_2 
+\end{pmatrix} \ \ \rightarrow \ \ 
+\begin{array}{rl}
+            E_f =E_0 -A \ \ \ \ket{f}=\frac{1}{\sqrt{2}}(\ket{+}+\ket{-})\equiv\frac{1}{\sqrt{2}} \begin{pmatrix} 
+   1 \\
+   1 
+\end{pmatrix} \\
+         E_e =E_0 +A \ \ \ \ket{e}=\frac{1}{\sqrt{2}}(\ket{+}-\ket{-})\equiv\frac{1}{\sqrt{2}}\begin{pmatrix} 
+   1 \\
+   -1 
+\end{pmatrix}
+        \end{array}
+\end{equation}
+\begin{itemize}
+    \item La presenza di un'ampiezza di transizione tra due stati degeneri rompe la degenerazione e abbassa l'energia dello stato fondamentale.
+    \item Lo stato fondamentale è simmetrico
+    \item La particella non è localizzata attorno a un minimo, come sarebbe nel caso classico, ma è distribuita in maniera equiprobabile tra i minimi.
+\end{itemize}
+
+Come si nota, l'Hamiltoniana e la Parità commutano, essendo i due autostati una combinazione pari e dispari degli stati di equilibrio.
+
+
+\subsubsection{Campo Elettrico}
+In un sistema come l'Ammoniaca la degenerazione può essere eliminata anche tramite l'introduzione di un campo elettrico.
+\\
+$N$ è più elettronegativo di $H$, per cui agli stati $\ket{\pm}$ si possono associare due momenti di dipolo $\pm d$, per cui si può introdurre un \textit{operatore di dipolo}:
+\begin{equation}
+    D=d\sigma_3=\begin{pmatrix}
+    d & 0 \\
+    0 & -d
+    \end{pmatrix}
+\end{equation}
+L'accoppiamento con un campo elettrico esterno vale $-D\mathcal{E}$, da cui è possibile scrivere un'Hamiltoniana:
+\begin{equation}
+    H=H_0-D\mathcal{E}=
+    \begin{pmatrix}
+    E_0 -d\mathcal{E} & -A \\
+    -A & E_0 + d\mathcal{E}
+    \end{pmatrix}
+\end{equation}
+che ha come autovalori (\ref{6.2.2}):
+\begin{equation}
+    E_0 \pm \sqrt{(d\mathcal{E})^2 + A^2}
+\end{equation}
+L'interazione del campo col sistema varia l'energia, in una maniera che è possibile studiare mediante il \textit{Th. di Hellman-Feynman} (\ref{6.2.2}):
+\begin{equation} \label{6.3.5}
+    \bra{\psi}D\ket{\psi}=-\frac{\partial}{\partial \mathcal{E}}E(\mathcal{E})
+\end{equation}
+Se tale dipendenza è lineare si ha il caso di un dipolo permanente.
+\\
+Se tale dipendenza è quadratica 
+\begin{equation}
+E=-\frac{1}{2} \alpha \mathcal{E}^2
+\end{equation}
+allora (\ref{6.3.5}) esprime  il dipolo indotto e $\alpha$ viene chiamato "polarizzabilità".
+\begin{equation}
+    \bar{D}=\alpha \mathcal{E}
+\end{equation}
+
+Lo spostamento dei livelli energetici dovuto alla presenza di un campo elettrico prende il nome di \textit{Effetto Stark} e può essere lineare o quadratico a seconda della dipendenza.
+\\
+\begin{itemize}
+    \item Per campi elettrici piccoli rispetto ad A lo stato fondamentale diviene
+    \begin{equation}
+        E=E_0 -\frac{1}{2}\frac{d^2\mathcal{E}^2}{A}
+    \end{equation}
+    con una conseguente polarizzazione 
+    \begin{equation*}
+        \alpha=\frac{d^2}{A}
+    \end{equation*}
+    \item Per campi molto grandi invece
+    \begin{equation}
+        E\sim E_0 -\mathcal{E}d
+    \end{equation}
+    perciò si ha effetto Stark lineare, ossia si osserva un momento di dipolo permanente (ciò che si intende quando si dice che l'Ammoniaca è una molecola polare).
+\end{itemize}
+
+
+
+\newpage
+
+\section{Oscillatore Armonico}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{euclide.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{10mm}
+\epigraph{Le leggi della Natura non sono che i pensieri matematici di Dio.}{\textit{Euclide, IV-III secolo a.c.}}
+\vspace{10mm}
+
+Si considera un oscillatore formato da una massa che risente di un potenziale quadratico. \\
+L'Hamiltoniana del sistema è:
+\begin{equation} \label{7.0.1}
+    H=\frac{\hat{p}^2}{2m}+\frac{1}{2}m\omega^2\hat{q}^2
+\end{equation}
+che porta ad un'equazione di Schr\"odinger della forma:
+\begin{equation}
+    -\frac{\hbar^2}{2m}\psi'' + \frac{1}{2}m\omega^2 x^2 \psi = E\psi
+\end{equation}
+
+Per prima cosa si fa un'analisi dimensionale del problema per estrarne la scala tipica (ogni sistema ne ha una).
+\\
+$\hbar$ e $m$ sono standard e la terza in questo caso è $\omega$.
+\\
+Utilizzare queste quantità come unità di misura equivale sostanzialmente a porre $\hbar=m=\omega=1$. Viene riportato esplicitamente il ragionamento:
+\begin{itemize}
+    \item Si isola il termine con la derivata seconda
+    \begin{equation*}
+        -\frac{1}{2}\psi''+\frac{1}{2}\frac{m^2 \omega^2}{\hbar^2}x^2\psi=\frac{mE}{\hbar^2}\psi
+    \end{equation*}
+    così tutti i termini che moltiplicano $\psi$ devono avere i termini di una [lunghezza]$^{-4}$, in particolare pongo
+    \begin{equation*}
+    \frac{m^2 \omega^2}{\hbar^2}\equiv \ell^{-4} \ \ \Rightarrow \ \ \ell = \sqrt{\frac{\hbar}{m \omega}}
+    \end{equation*}
+    \item Ora posso passare a variabili adimensionali secondo:
+    \begin{equation*}
+        x=\ell \xi \ \ ; \ \ E=\frac{\hbar^2}{m \ell^2}E_{ad}=\hbar \omega E_{ad}
+    \end{equation*}
+    da cui si ricava l'equazione di Schr\"odinger adimensionale per l'Oscillatore Armonico:
+    \begin{equation*}
+        -\frac{1}{2}\frac{d^2 \psi}{d\xi^2}+ \frac{1}{2}\xi^2 \psi =E_{ad} \psi= \frac{E}{\hbar \omega}\psi
+    \end{equation*}
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsection{Soluzione algebrica: operatori \textit{a} e \textit{a}\texorpdfstring{$^\dagger$}{Lg}}
+Essendo l'Hamiltoniana di un oscillatore armonico una forma quadratica (nelle $q$ e nelle $p$, scalari, in meccanica classica), risulta possibile passare ai complessi per scriverla nella forma:
+\begin{equation} \label{7.1.1}
+    x^2 + y^2 =(x+iy)(x-iy)
+\end{equation}
+Analogamente vengono introdotti in meccanica quantistica degli operatori che permettano un'estensione della (\ref{7.1.1}).
+\begin{equation} \label{7.1.2} \begin{split}
+    a=\frac{1}{\sqrt{2}}\biggl( \frac{q}{\ell}+i\frac{p}{m \omega \ell} \biggr) \\
+     a^{\dagger}=\frac{1}{\sqrt{2}}\biggl( \frac{q}{\ell}-i\frac{p}{m \omega \ell} \biggr)
+\end{split} \end{equation}
+I coefficienti delle $q$ e delle $p$ valgono 1 in unità naturali.
+\\
+Invertendo queste relazioni si trova:
+\begin{equation}
+     \begin{array}{lr} 
+        q=\frac{\ell}{\sqrt{2}}(a+ a^{\dagger}) \\ 
+        p=\frac{1}{i}\frac{m \omega \ell}{\sqrt{2}}(a-a^{\dagger})=\frac{1}{i}\frac{\hbar}{\sqrt{2}\ell}(a-a^{\dagger})
+  \end{array}
+\end{equation}
+Considerando il commutatore tra i due operatori appena introdotti si trova la relazione:
+\begin{equation} \label{7.1.4}
+    [a,a^{\dagger}]=1
+\end{equation}
+che è equivalente alle regole di commutazione canoniche.
+\\ \\
+Si riportano anche delle relazioni di interesse:
+\begin{equation} \label{7.1.5}
+    \begin{matrix}
+    [a^{\dagger}a,a]=-a & [a^{\dagger}a,a^{\dagger}]=a^{\dagger} \\
+    [a,a^{\dagger^n}]=na^{\dagger^{n-1}} & [a^{\dagger},a^n]=-na^{n-1}
+    \end{matrix}
+\end{equation}
+(\ref{7.1.4}) rappresenta un'algebra ed è ora di interesse cercarne una rappresentazione in uno spazio di Hilbert. Lo si fa andando a scrivere gli autostati di $H$ in funzione di questi operatori, trasformando il tutto in un problema agli autovalori.
+\\
+Sostituendo esplicitamente le espressioni di $p$ e $q$ in (\ref{7.0.1}):
+\begin{equation}
+    H=\frac{1}{2}m \omega^2
+\frac{1}{2}\ell^2(a^2+a^{\dagger^2}+aa^{\dagger}+a^{\dagger}a)-\frac{1}{2m}m^2 \omega^2 \ell^2 \frac{1}{2}(a^2+a^{\dagger^2}-aa^{\dagger}-a^{\dagger}a)
+\end{equation}
+
+che, combinando quanto riportato in (\ref{7.1.5}) alle relazioni dimensionali tra i parametri del problema, si riduce a:
+\begin{equation}
+    H=\hbar \omega \biggl( a^{\dagger}a+\frac{1}{2}  \biggr)
+\end{equation}
+\\
+Perciò se $\ket{E}$ è un autostato di $H$, applicando gli operatori in (\ref{7.1.2}) si trova:
+\begin{equation}
+    \begin{split}
+         Ha\ket{E}=aH\ket{E}-\hbar \omega a \ket{E}=(E-\hbar \omega)a\ket{E} \\
+        Ha^{\dagger}\ket{E}=a^{\dagger}H\ket{E}+\hbar \omega a^{\dagger}\ket{E}=(E+\hbar \omega )a^{\dagger}\ket{E}
+        \end{split}
+\end{equation}
+Conseguentemente anche $a\ket{E}$ e $a^{\dagger}\ket{E}$ sono autostati di $H$ con autovalori $(E-\hbar \omega)$ e $(E+\hbar \omega)$. Per questa ragione $a$ e $a^{\dagger}$ sono chiamati operatori di discesa e salita.
+\\ \\
+Chiaramente non si può far scendere indefinitamente l'Energia, altrimenti $H$ non sarebbe limitata inferiormente.
+\\
+Per interrompere questa catena viene introdotto uno stato fondamentale $\ket{0}$, tale che:
+\begin{equation}
+    a\ket{0}=0
+\end{equation}
+Questo risulta lo stato con energia minima e andando a vedere quanto vale in particolare con la definizione di $H$:
+\begin{equation}
+    H\ket{0}=\frac{1}{2}\hbar \omega \ket{0} \ \ ; \ \ E_0 = \frac{1}{2}\hbar \omega
+\end{equation}
+Partendo dallo stato fondamentale è possibile costruire tutti gli stati utilizzando l'operatore di salita iterativamente, trovando gli stati con energia $E_n$:
+\begin{equation}
+    Ha^{\dagger^n}\ket{0}=E_n a^{\dagger^n}\ket{0} \ \ ; \ \ E_n=\hbar \omega \biggl( n+\frac{1}{2} \biggr)
+\end{equation}
+Anche la normalizzazione di questi stati viene calcolata iterativamente come:
+\begin{equation}
+    D_n\equiv \bra{0}a^na^{\dagger^n}\ket{0}=\bra{0}a^{n-1}aa^{\dagger^n}\ket{0}=\bra{0}a^{n-1}(a^{\dagger^n}a+na^{\dagger^{n-1}})\ket{0}=n\bra{0}a^{n-1}a^{\dagger^{n-1}}\ket{0}=nD_{n-1}
+\end{equation}
+\begin{equation*}
+    \Rightarrow D_n = n!
+\end{equation*}
+A questo punto è possibile definire degli stati normalizzati come:
+\begin{equation}
+    \ket{n}=\frac{a^{\dagger^n}}{\sqrt{n!}}\ket{0}
+\end{equation}
+Vale l'ortogonalità tra stati: $\bra{k}\ket{n}=\delta_{kn}$ e si dimostra velocemente come agiscono questi operatori sugli stati appena definiti:
+\begin{equation} 
+\begin{split}
+    a\ket{n}=a\frac{a^{\dagger^n}}{\sqrt{n!}}\ket{0}=n\frac{a^{\dagger^{n-1}}}{\sqrt{n!}}\ket{0}=\sqrt{n}\ket{n-1} \\
+    a^{\dagger}\ket{n}=\frac{a^{\dagger^{n+1}}}{\sqrt{n!}}\ket{0}=\sqrt{n+1}\ket{n+1}
+\end{split}
+\end{equation}
+Adoperando gli $\ket{n}$ come base per lo spazio di Hilbert si può sfruttare la completezza per scrivere gli stati generici:
+\begin{equation}
+   \ket{\psi}=\displaystyle\sum_{n=0}^{\infty} c_n \ket{n} 
+\end{equation}
+Sapere come gli operatori di salita e discesa agiscono sulla base ci permette allora di sapere come agiscono su tutto lo spazio di Hilbert e forniscono conseguentemente una rappresentazione esplicita dell'algebra (\ref{7.1.4}). 
+\\
+L'oscillatore armonico è invariante sotto parità e gli stati si possono dividere in pari e dipari. Il fondamentale è pari e senza nodi. Lo stato $n$-esimo ha parità $(-1)^n$ e $n$ nodi.
+
+\vspace{0.5cm}
+
+\subsection{Metodo di Fattorizzazione}
+Considero l'equazione di Schr\"odinger adimensionale e riscrivo gli operatori di salita e discesa in funzione di operatori differenziali:
+\begin{equation}
+    \begin{split}
+        -\frac{1}{2}\frac{d^2}{d\xi^2}\psi+\frac{1}{2}\xi^2\psi\equiv\mathcal{E}\psi
+        \\
+        a=\frac{1}{\sqrt{2}}\biggl( \xi + \frac{d}{d\xi} \biggr)
+        \\
+        a^{\dagger}=\frac{1}{\sqrt{2}}\biggl( \xi - \frac{d}{d\xi} \biggr)
+    \end{split}
+\end{equation}
+Da cui risulta che è possibile fattorizzare un operatore differenziale del secondo ordine in funzione di due del primo:
+\begin{equation}
+    H-\frac{1}{2}\hbar \omega=\frac{1}{2} \biggl( \xi - \frac{d}{d\xi} \biggr) \biggl( \xi + \frac{d}{d\xi} \biggr)
+\end{equation}
+Questo trasforma la ricerca dello stato fondamentale nella ricerca della soluzione di:
+\begin{equation}
+    \biggl( \xi + \frac{d}{d\xi} \biggr)\psi_0(\xi) = 0 \ \ \ \Rightarrow \ \ \ \psi_0(\xi)=C_0 e^{-\xi^2/2}
+\end{equation}
+
+La costante di normalizzazione si trova ricordando l'integrale Gaussiano ($\int_{-\infty}^{\infty}e^{-x^2} \ dx = \sqrt{\pi}$):
+\begin{equation}
+    C_0=\frac{1}{\pi^{1/4}} \ \ \rightarrow \ \ \psi_0(\xi)=\frac{e^{-\xi^2/2}}{\pi^{1/4}}
+\end{equation}
+Da cui utilizzando la (7.1.13) si trova per lo stato $n$-esimo una funzione d'onda del tipo:
+\begin{equation}
+    \psi_n(\xi)=\frac{1}{\pi^{1/4}}\frac{1}{\sqrt{2^n n!}}\biggl( \xi - \frac{d}{d\xi} \biggr)^n e^{-\xi^2/2} \ \equiv \ \frac{1}{\pi^{1/4}}\frac{1}{\sqrt{2^n n!}}H_n(\xi) e^{-\xi^2/2}
+\end{equation}
+Dove $H_n(\xi)$ sono detti \textit{Polinomi di Hermite}. Qua ne vengono elencate alcune proprietà importanti e vengono esplicitamente riportati i valori dei primi due:
+\begin{itemize}
+    \item I polinomi con $n$ pari sono pari, quelli con $n$ dispari sono dispari.
+    \item $H_0(x)=1 \ \ \ , \ \ \ H_1(x)=2x$.
+    \item I polinomi di grado $n$ hanno $n$ zeri reali.
+\end{itemize}
+
+La relazione di completezza per quanto visto sopra risulta in:
+\begin{equation}
+    \displaystyle\sum_{n=0}^{\infty}\ket{n}\bra{n}=1 \ \ \iff \ \ \displaystyle\sum_{n=0}^{\infty} \psi_n(\xi)\psi_n(\xi')=\delta(\xi-\xi')
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Th. del Viriale}
+ In base a quanto trovato precedentemente per i valori di aspettazione:
+ \begin{equation}
+     \begin{split}
+         \frac{1}{2}m\omega^2\bra{n}q^2\ket{n}=\frac{1}{2}\hbar\omega\biggl(n+\frac{1}{2}\biggr) \\
+         \frac{1}{2m}\bra{n}p^2\ket{n}=\frac{1}{2}\hbar\omega\biggl(n+\frac{1}{2}\biggr)
+     \end{split}
+ \end{equation}
+Ossia in termini energetici:
+\begin{equation}
+    \bra{n}K\ket{n}=\bra{n}U\ket{n}=\frac{1}{2}E_n
+\end{equation}
+\'E possibile generalizzare questo risultato ed enunciare l'equivalente quantistico del
+
+\begin{theorem}[\textbf{Th. del Viriale:}]
+Se $U$ è una funzione omogenea di grado $\nu$ ($U(\alpha x)=\alpha^{\nu}U(x)$), allora su uno stato stazionario $\ket{E}$ si ha
+\begin{equation}
+    2\bra{E}K\ket{E}=\nu\bra{E}K\ket{E} \ \ ; \ \ E=\bar{K}+\bra{U}
+\end{equation}
+Da cui
+\begin{equation}
+    \bar{U}=\frac{2}{\nu +2}E \ \ ; \ \ \bar{K}=\frac{\nu}{\nu +2}E
+\end{equation}
+\end{theorem}
+
+\vspace{0.5cm}
+
+\subsection{Hamiltoniane separate}
+Se in un sistema in due variabili $\{x,y\}$, l'Hamiltoniana ha la forma:
+\begin{equation}
+    H=H_x+H_y
+\end{equation}
+l'equazione agli autovalori si traduce in
+\begin{equation}
+    (H_x+H_y)\psi(x,y)=E\psi(x,y)
+\end{equation}
+e si può sempre cercare una base di autostati sotto forma di prodotto di autofunzioni delle singole Hamiltoniane.
+\\
+Per una base di questo genere risulta naturalmente che l'autovalore dello stato $n$-esimo è:
+\begin{equation}
+    E_n=E_{n_x}+E_{n_y}
+\end{equation}
+
+\subsection{Oscillatore in campo esterno}
+Considero un oscillatore armonico in un campo elettrico esterno, supponendo abbia carica $e$.
+\\
+L'Hamiltoniana è:
+\begin{equation}
+    H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2 x^2 -ex\mathcal{E}
+\end{equation}
+A questo punto è possibile completare il quadrato:
+\begin{equation}
+    H=\frac{p^2}{2m}+\frac{1}{2}m\omega^2\biggl( x-\frac{e\mathcal{E}}{m\omega^2} \biggr)^2 -\frac{1}{2}\frac{e^2}{m\omega^2}\mathcal{E}^2
+\end{equation}
+E ponendo a questo punto 
+\begin{equation*}
+    z\equiv x-\frac{e\mathcal{E}}{m\omega^2}
+\end{equation*}
+Il sistema ritorna ad essere un oscillatore armonico a meno di una costante addittiva.
+\\ \\
+Si vede immediatamente che i suoi autovalori sono:
+\begin{equation}
+    E_n=\hbar\omega \biggl( n+\frac{1}{2} \biggr) -\frac{1}{2}\frac{e^2}{m\omega^2}\mathcal{E}^2
+\end{equation}
+Mentre gli autostati sono gli autostati di un oscillatore armonico ma centrati intorno a un differente punto di equilibrio.
+\begin{equation}
+    \Tilde{\psi}_n(x)=\psi_n (x-a) \ \ \ , \ \ \text{dove} \ \ a\equiv\frac{e\mathcal{E}}{m\omega^2}
+\end{equation}
+Si vede immediatamente che non può esserci Effetto Stark lineare (il sistema è invariante sotto parità e abbiamo visto che un dipolo permanente induce una direzione preferenziale), mentre c'è un Effetto Stark quadratico:
+\begin{equation}
+    \bra{\Tilde{n}}D\ket{\Tilde{n}}=\alpha\mathcal{E}=\frac{e^2}{m\omega^2}\mathcal{E}
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Stati Coerenti}
+Sono così chiamati gli autostati dell'operatore $a$ per un oscillatore armonico:
+\begin{equation}
+    a\ket{\beta}=\beta\ket{\beta}
+\end{equation}
+Si può scrivere come sviluppo in serie
+\begin{equation}
+    \ket{\beta}=\displaystyle\sum_{n}c_n\ket{n} \ \ \rightarrow \ \ a\ket{\beta}=\displaystyle\sum_{n}c_n\sqrt{n}\ket{n-1}=\displaystyle\sum_{n}\beta c_n\ket{n}
+\end{equation}
+Mandando nella prima somma $n \ \rightarrow \ n+1$ si trova 
+\begin{equation}
+    c_{n+1}=\beta\frac{c_n}{\sqrt{n+1}} \ \ \Rightarrow \ \ c_n=c_0\frac{\beta^n}{\sqrt{n!}}
+\end{equation}
+Risulta perciò possibile scrivere uno stato generico in funzione dello stato fondamentale:
+\begin{equation}
+    \ket{\beta}=c_0\displaystyle\sum_{n}\frac{\beta^n}{\sqrt{n!}}\ket{n}\equiv c_0\displaystyle\sum_{n}\frac{\beta^n a^{\dagger^{n}}}{n!}\ket{0} \ \ \rightarrow \ \ \ket{\beta}=e^{-|\beta|^2/2}\displaystyle\sum_{n}\frac{\beta^n a^{\dagger^{n}}}{n!}\ket{0}\equiv e^{-|\beta|^2/2}e^{\beta a^{\dagger}}\ket{0}
+\end{equation}
+Adesso dalla definizione di evoluzione temporale per gli stati è possibile vedere come evolvono gli stati coerenti:
+\begin{equation}
+    \ket{\beta(t)}=\displaystyle\sum_{n}e^{-|\beta|^2/2}\frac{\beta^n}{\sqrt{n!}}e^{-i(n+1/2)\omega t}\ket{n}=e^{-i\omega t/2}\ket{\beta e^{-i\omega t}}
+\end{equation}
+
+Per cui l'evoluzione di uno stato coerente è ancora uno stato coerente (non si sparpaglia). \\ 
+\'E quanto più vicino alla descrizione classica di una particella. \\
+Il valor medio delle osservabili su questi stati evolve secondo le equazioni classiche e l'evoluzione temporale è data dalla sola sostituzione $\beta \ \rightarrow \ \beta e^{-i\omega t}$.
+\\
+Si tratta di una distribuzione di probabilità che evolve "rigidamente" nel campo dell'oscillatore.
+
+\newpage
+
+\section{Approssimazione semiclassica e decadimenti}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{epicuro.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{9mm}
+\epigraph{\'E folle che un uomo preghi gli Dei per ciò che può procurarsi con le proprie forze.}{\textit{Epicuro,341-270 a.c.}}
+\vspace{9mm}
+
+L'approssimazione semiclassica consiste nello studiare le conseguenze della meccanica quantistica per $\hbar$ piccolo.
+\\
+$\hbar$ ha le dimensione di un azione quindi si intende $\hbar <<$ Azioni classiche.
+\\
+Se si considera $p=\frac{h}{\lambda}$, prendere il limite per $\hbar \rightarrow 0$ mantenendo $p$ costante equivale a fare il limite per $\lambda \rightarrow 0$, che è il limite dell'ottica geometrica.
+\\
+L'equazione di Schr\"odinger stazionaria assume la forma:
+\begin{equation} \label{8.0.1}
+    \psi''+k^2(x)\psi=0
+\end{equation}
+dove
+\begin{equation}
+    k^2(x)\psi=\frac{2m}{\hbar^2}(E-V(x))\psi=\frac{1}{\hbar^2}p^2(x)\psi(x)
+\end{equation}
+che  è l'usuale equazione di propagazione per un'onda monocromatica con frequenza $\omega$ e indice di rifrazione variabile $n(x)$ ($k=\frac{n\omega}{c}$).
+\\
+Il comportamento del potenziale è analogo alla presenza di un indice di rifrazione variabile.
+\\
+Nelle zone classicamente permesse $\hbar k(x)$ coincide con l'impulso classico, mentre in quelle proibile $k(x)$ è immaginario e si ha il caso delle onde evanescenti.
+\\
+\\
+Quello che viene fatto è uno sviluppo in termini di $\hbar$.
+Formalmente pongo 
+\begin{equation}
+    \psi(x)=e^{\frac{i}{\hbar}F(x)} \ \ ; \ \ \psi'=\frac{i}{\hbar}F'(x)\psi(x)
+\end{equation}
+e vado a sostituire in (\ref{8.0.1})
+\begin{equation}
+    i\hbar F''-(F')^2 +p^2=0
+\end{equation}
+Il primo termine termine è trascurabile per via dello sviluppo che stiamo effettuando, per cui:
+\begin{equation}
+    F'=\pm p \ \ \Rightarrow \ \ F=\pm\int p(x) \ dx
+\end{equation}
+Affinchè valga lo sviluppo deve valere la seguente condizione:
+\begin{equation} \label{8.0.6}
+    \hbar p' << p^2 \ \ \Rightarrow \ \ k'(x)<<k^2(x) \ \ \iff \ \ |k'(x)| << k^2(x) \ \ \Rightarrow \ \ \frac{1}{2\pi}\frac{d\lambda}{dx} << 1
+\end{equation}
+che è la condizione usuale per l'approssimazione dell'ottica geometrica.
+\\ \\
+Considerando un vero e proprio sviluppo in serie per $F$ si trova
+\begin{equation*}
+    F=F_0 + \hbar F_1 + o(\hbar^2)
+\end{equation*}
+In cui evidentemente il primo ordine è:
+\begin{equation}
+    \psi\sim \frac{1}{\sqrt{p}}e^{\pm\frac{i}{\hbar}\int p(x) \ dx} \ \ \ \iff \ \ \  \psi\sim \frac{1}{\sqrt{k}}e^{\pm i \int k(x) \ dx}
+\end{equation}
+\\
+La soluzione per casi con $k^2 < 0$ è
+\begin{equation}
+    \psi\sim \frac{1}{\sqrt{|k}|}e^{\pm \int |k(x)| \ dx}
+\end{equation}
+Per cui si trova una forma approssimata per la funzione d'onda nei due regimi del tipo:
+\begin{equation} \label{8.0.9}
+    \psi\sim \left \{ \begin{array}{rl}
+         \frac{1}{\sqrt{k}}\biggl( C_1 e^{i\int k dx} + C_2 e^{-i\int k dx} \biggr) \ \ \ \ \ \ E > V  \\
+         \frac{1}{\sqrt{|k|}}\biggl( D_1 e^{\int |k| dx} + D_2 e^{-\int |k| dx} \biggr) \ \ \ E < V
+    \end{array}
+    \right.
+\end{equation}
+Per arrivare a una soluzione rigorosa sarebbe necessario completare la funzione d'onda nella zona intermedia ai due regimi.
+\\
+Il problema è che le due zone sono connesse dal punto con $E=V$, ossia i punti di inversione del moto classico, in cui $p=k=0$, che è dove l'approssimazione (\ref{8.0.6}) non vale.
+\\
+Un modo per aggirare questa problematica è approssimare il potenziale intorno ai punti di inversione con un segmento e risolvere esattamente l'equazione di Schr\"odinger per poi raccordare le soluzioni con quelle trovate in (\ref{8.0.9}).
+\\
+La soluzione viene fornita in termini delle due funzioni:
+\begin{equation} \label{8.0.10}
+    w(a,x)=\int_{a}^{x}k(x) \ dx \ \ \ , \ \ \ \sigma(a,x)=\int_{a}^{x}|k(x)| \ dx
+\end{equation}
+Le connessioni tra i comportamenti nelle zone permessa e proibita sono:
+\begin{equation} \label{8.0.11}
+    \begin{array}{lr}
+        \frac{1}{\sqrt{p}}cos\biggl( |w(a,x)|-\frac{\pi}{4} \biggr) \leftarrow \psi(x) \rightarrow \frac{1}{2}\frac{1}{\sqrt{|p|}}e^{-|\sigma(a,x)|} \\
+        \frac{1}{\sqrt{p}}cos\biggl( |w(a,x)|+\frac{\pi}{4} \biggr) \leftarrow \psi(x) \rightarrow \frac{1}{\sqrt{|p|}}e^{|\sigma(a,x)|}
+    \end{array}
+\end{equation}
+Il caso che si presenta nell'Effetto Tunnel è quello di una particella che, dopo aver attraversato una barriera si trova al di là di un punto di inversione.
+La funzione d'onda asintotica deve essere un'onda progressiva e le estensioni prendono la forma:
+\begin{equation}
+    \pm i \frac{1}{\sqrt{|k|}}e^{\sigma(x,a)}
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Quantizzazione di Bohr-Sommerfeld}
+
+Si consideri un potenziale come quello in Figura \ref{inversione}:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{pot quadratico.JPG}
+\caption{Potenziale con punti di inversione}
+\label{inversione}
+\end{figure}
+
+Si applicano le formule di connessione ai punti di inversione.
+
+\begin{equation} \begin{split}
+    \frac{A}{2}\frac{1}{|\sqrt{p}|}e^{-\sigma(x,a)} \rightarrow \frac{A}{\sqrt{p}}cos\biggl( w(a,x) - \frac{\pi}{4} \biggr) \\
+    \frac{B}{2}\frac{1}{|\sqrt{p}|}e^{-\sigma(b,x)} \rightarrow \frac{B}{\sqrt{p}}cos\biggl( w(x,b) - \frac{\pi}{4} \biggr)
+\end{split} \end{equation}
+Nella zona permessa i prolungamenti devono avere la stessa ampiezza e  la stessa fase:
+\begin{equation}
+    \begin{split}
+        |A|=|B| \ \rightarrow \ A=\pm B \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \\
+        cos\biggl( w(a,x) - \frac{\pi}{4} \biggr)=cos\biggl( w(a,b)-w(x,b) -\frac{\pi}{4} \biggr)=cos\biggl( w(x,b)-w(a,b)+\frac{\pi}{4} \biggr)
+    \end{split}
+\end{equation}
+
+Per la teoria delle funzioni di variabile complessa, questa determinazione deve differire dalla seconda fase per un fattore $n\pi$, con $n$ pari o dispari a seconda del segno tra $A$ e $B$.
+\begin{equation}
+    -\frac{\pi}{4}=n\pi + \biggl( -w(a,b) +\frac{\pi}{4} \biggr) \ \ \rightarrow \ \ w(a,b)=\biggl( n+\frac{1}{2}  \biggr)\pi
+\end{equation}
+Passando per la definizione di $w$ (\ref{8.0.10}) si trova come condizione per l'esistenza di uno stato legato:
+\begin{equation}
+    \int_a ^b p(x) \ dx=\biggl( n+\frac{1}{2} \biggr)\pi \hbar
+\end{equation}
+
+Passando alla circuitazione sullo spazio delle fasi si recupera la condizione originale di Bohr-Sommerfeld:
+\begin{equation}
+   J=\frac{1}{2\pi} \oint p(x) \ dx =\frac{1}{\pi}\int_a ^b p(x) \ dx = \biggl( n+\frac{1}{2} \bigg)\hbar
+\end{equation}
+
+Andando a dividere l'area nello spazio delle fasi per la larghezza del "bin" ($\hbar$ in questa approssimazione) si ottiene l'energia.
+Andando a sostituire nella (\ref{8.0.11}) è possibile ottenere la funzione d'onda nella zona permessa:
+\begin{equation} \label{8.1.6}
+    \psi(x)\sim \frac{C}{\sqrt{p}}cos\biggl( \frac{1}{\hbar}\int_a ^x p(x) \ dx -\frac{\pi}{4} \biggr)
+\end{equation}
+Si va a calcolare la normalizzazione:
+\begin{equation}
+   1 =\int_{-\infty} ^{\infty} |\psi(x)|^2 \ dx \simeq \int_a ^b C^2 \frac{1}{p} cos^2\biggl( w(a,x) - \frac{\pi}{4} \biggr) \ dx
+\end{equation}
+Effettuando una media, $cos^2 (\phi)$ si può sostituire con $1/2$ e si fa la sostituzione $dx/p=dx/mv=dt/m$:
+\begin{equation}
+    1=\frac{C^2}{2m}\int_a ^b dt=\frac{C^2}{2m}\frac{T}{2}
+\end{equation}
+dove $T$ è il periodo classico di oscillazione:
+\begin{equation}
+    C=2\sqrt{\frac{m}{T}}=\sqrt{\frac{2m\omega}{\pi}} \ \ , \ \ \omega=\frac{2\pi}{T}
+\end{equation}
+Per un potenziale pari (punti di inversione $\pm a$) la condizione di quantizzazione diventa:
+\begin{equation}
+    w(-a,a)=\biggl( n +\frac{1}{2} \biggr)\pi \ \Rightarrow \ w(-a,0)-\frac{\pi}{4}=\frac{n}{2}\pi
+\end{equation}
+Da cui si evince che gli stati con $n$ dispari si annullano nell'origine.
+
+%vspace per motivi estetici
+\vspace{3 cm}
+
+
+\subsection{Effetto Tunnel}
+
+L'approssimazione semiclassica può essere usata per stimare la probabilità di attraversamento di una barriera per Effetto Tunnel.
+\\
+Si considera come caso generico quello in Figura \ref{tunnel}:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{tunnel.JPG}
+\caption{Barriera di potenziale}
+\label{tunnel}
+\end{figure}
+
+La zona $a\leq x\leq b$ è quella classicamente proibita, dove vale una soluzione esponenzialmente decrescente.
+\\
+La probabilità di attraversamento della barriera è data dal rapporto tra flussi uscenti ed entranti:
+\begin{equation} \label{8.2.1}
+    \frac{k_b}{k_a}|T|^2\simeq \frac{k_b|\psi(b)|^2}{k_a|\psi(a)|^2}\simeq e^{-\frac{2}{\hbar}\int_a ^b \sqrt{2m(V-E)}dx}=e^{-2\int_a ^b |p(x)| dx/\hbar}=P_{a \rightarrow b}
+\end{equation}
+La (\ref{8.2.1}) fornisce una stima ragionevole della probabilità di tunneling.
+
+\vspace{0.5cm}
+
+\subsection{Decadimento \texorpdfstring{$\alpha$}{Lg}}
+Il decadimento $\alpha$ è una delle applicazioni tipiche della (\ref{8.2.1}), nonchè, pare, una domanda molto gettonata all'orale.
+\\
+Per particella $\alpha$ si indica un nucleo di Elio, composto da due protoni e due neutroni (carica $+2e$). Indicando con $Z$ il numero atomico e con $A$ la massa atomica, si descrive il decadimento come:
+\begin{equation}
+    M(A,Z) \rightarrow M(A-4,Z-2)+M(4,2)\equiv M(A-4,Z-2)+\alpha
+\end{equation}
+
+Il nucleo di partenza e arrivo sono autostati dell'Hamiltoniana nucleare, per cui l'energia della particella $\alpha$ è definita, nel senso che si osserva emissione di radiazione monocromatica.
+\\
+La conservazione dell'energia permette di stimare l'energia cinetica $Q$ della particella, solitamente di qualche MeV.
+\\ \\
+\textit{Classicamente quest'evidenza sperimentale è inspiegabile.}
+\\ \\
+Il raggio tipico di un nucleo è solitamente approssimato come:
+\begin{equation}
+    r_0\simeq1.2\times 10^{-13}A^{1/3}cm\equiv 1.5 A^{1/3}fm
+\end{equation}
+Per $A=220$ risulta $r_0\simeq 7.25 fm$. La forza Coulombiana è stata dimostrata valere a quelle distanze.
+\\ \\
+Per $r_N \simeq 7.25 fm$ si trova come valore dell'energia potenziale di cui risente la particella $\alpha$:
+\begin{equation}
+    (Z-2)2\frac{e^2}{r_1}=2(Z-2)\frac{e^2}{\hbar c}\frac{\hbar c}{r_N}\sim 35 MeV
+\end{equation}
+Il potenziale elettrostatico è almeno un ordine di grandezza superiore all'energia cinetica della particella.
+\\
+Il potenziale effettivo che sente la particella è approssimativamente indicato in Figura \ref{alpha}:
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.3]{alpha.JPG}
+\caption{Potenziale effettivo per una particella $\alpha$}
+\label{alpha}
+\end{figure}
+
+La particella per uscire dal nucleo dovrebbe attraversare una zona con $V>E$, che non è possibile classicamente.
+\\
+Osservazioni:
+\begin{itemize}
+    \item Una roba sulle forze nucleari che apprezzerai e rifarai meglio in futuro
+    \item La particella $\alpha$ non è in uno stato legato della buca, altrimenti avrebbe energia negativa e non positiva.
+    \\
+    Come stima si suppone la buca abbia profondità $-|V_0|$ e la particella parta dal fondo.
+    \begin{equation}
+        E\sim \frac{\hbar^2}{2mr_N ^2}-|V_0|
+    \end{equation}
+    Essendo $E>0$ risulta
+    \begin{equation*}
+        |V_0|<\frac{\hbar^2}{2mr_N ^2}
+    \end{equation*}
+    con $\hbar c = 200 MeV$ e $mc^2 \sim 4 GeV$
+    \begin{equation*}
+        \frac{\hbar^2}{2mr_N ^2}\sim 1 MeV \ \ ; \ \ |V_0|<1 MeV
+    \end{equation*}
+    
+    \item Il moto della particella dentro la buca ($r<r_N$) può essere schematizzato come quello di una particella che parta dal fondo, con conseguente energia:
+    \begin{equation}
+        E_n=\frac{\hbar^2}{2m}\frac{\pi^2}{r_N ^2}n^2
+    \end{equation}
+    Ossia, il motivo per cui l'energia della $\alpha$ è ben definito è che le energie sono quantizzate.
+\end{itemize}
+
+Appurato che l'emissione della particella avviene tramite Effetto Tunnel, si può stimarne la vita media.
+\\
+La frequenza con cui la particella arriva alla barriera si può stimare classicamente come $\frac{1}{\tau_{orb}}$, dove $\tau_{orb}$ è il periodo classico del moto tra i punti di inversione.
+\\
+La probabilità di decadimento per secondo è allora:
+\begin{equation} \label{8.3.6}
+    \gamma=\frac{1}{\tau_{orb}}P
+\end{equation}
+La (\ref{8.3.6}) dipende fortemente dalla velocità della particella. Effettuando dei conti banali ma lunghi per la mia voglia di ricopiarli, si trova in ultima istanza:
+\begin{equation}
+    P\simeq exp\biggl(-\frac{2\pi q_1 q_2}{\hbar v}\biggr)
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Legge di decadimento e vita media}
+Dalla definizione data di $\gamma$, si può estendere quanto visto per una particella ad una popolazione di nuclei $N(t)$.
+\\
+In un tempo $dt$ la popolazione diminuisce di:
+\begin{equation} \label{8.4.1}
+    dN=-\gamma N(t) \ \Rightarrow \ N(t)=N_0 e^{-\gamma t}
+\end{equation}
+La (\ref{8.4.1}) è nota come \textit{Legge di decadimento radiativa}.
+\\
+Si può definire una vita media ($\tau$) per un sistema, come:
+\begin{equation}
+    \tau=\frac{1}{\gamma}
+\end{equation}
+Definendo come \textit{Nuclei con vita $t$} la frazione di $N(t)$ sopravvissuti fino a $t$ e che decadono tra $t$ e $t+dt$, questi risultano essere, per definizione di $\gamma$, $N(t)\gamma dt$. Ossia, facendo una media pesata di $t$ rispetto alla popolazione iniziale $N_0$:
+\begin{equation}
+    \bar{t}=\frac{1}{N_0}\int_0 ^{\infty} tN(t)\gamma \ dt = \frac{1}{N_0} \int_0 ^{\infty} t[N_0 e^{-\gamma t}]\gamma \ dt= \frac{1}{\gamma}
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Effetto Tunnel e separazione dei livelli}
+
+Si è visto in (\ref{6.2.2}) che l'introduzione di un termine fuori diagonale nell'Hamiltoniana di un sistema a due stati introduce una rottura della degenerazione dei livelli energetici.
+\begin{equation}
+    h=\begin{pmatrix}
+     E_0 & \varepsilon \\
+    \varepsilon & E_0 
+    \end{pmatrix}
+\end{equation}
+In particolare da un singolo livello $E_0$ si introduce un secondo livello con una separazione energetica pari a
+\begin{equation}
+    \Delta E= 2 |\varepsilon|
+\end{equation}
+E il parametro $\varepsilon / \hbar$ va interpretato come l'ampiezza di transizione per unità di tempo tra uno stato e l'altro.
+\\
+In approssimazione semiclassica l'ampiezza di transizione tra i due minimi in $-a$ e $a$ è descritta dal coefficiente di trasmissione, ossia l'ampiezza è data dal coefficiente per unità di tempo $T/\tau$, quindi:
+\begin{equation} \label{8.5.3}
+    \Delta E =2|\varepsilon|=2\frac{\hbar}{\tau}|T|=\frac{\hbar \omega}{\pi}|T|=\frac{\hbar \omega}{\pi}exp\biggl( -\int_{-a} ^{a} \frac{|p(x)|}{\hbar} \ dx \biggr)
+\end{equation}
+
+La (\ref{8.5.3}) descrive approssimativamente il sistema per piccoli valori di transizione.
+
+\vspace{0.5cm}
+
+\subsection{Teoria di Gamow-Siegert}
+Si definisce \textbf{Stato Metastabile} di un sistema uno stato (con energia  che indichiamo $E_0$) che ha una data probabilità di decadimento per unità di tempo $\gamma$.
+\\
+Se si prepara il sistema in uno stato $\ket{\psi}$, si trova che la probabilità di osservare lo stesso stato diminuisce in maniera esponenziale col tempo.
+\begin{equation}
+    |\bra{\psi}\ket{\psi(t)}|^2=e^{-\gamma t}
+\end{equation}
+Un modo efficace per descrivere questa situazione è supporre valori complessi per l'energia
+\begin{equation}
+    E=E_0 - i\Gamma/2 \ \ \ , \ \ \gamma=\Gamma/\hbar
+\end{equation}
+A questo punto la relazione di prima diventa:
+\begin{equation}
+    |\bra{\psi}\ket{\psi(t)}|^2=|\bra{\psi}e^{-i(E_0 - i\Gamma/2)/\hbar}\ket{\psi}|^2=e^{-\Gamma t /\hbar}
+\end{equation}
+Chiaramente quanto fatto ha senso solo nel regime $\Gamma << E_0$, ossia per uno stato quasi-stazionario.
+\\
+A questo punto bisogna trovare degli autovalori immaginari per l'Hamiltoniana, che è autoaggiunta, quindi ha solo autovalori reali (si usa un metodo differente).
+\\
+Si supponga un sistema tridimensionale.
+Se esso decade, deve essere asintoticamente descritto da un'onda sferica divergente ($e^{ikr}/r$).
+\\
+Con questa condizione al contorno si può impostare il problema agli autovalori.
+\\
+In una dimensione la condizione si traduce in un'onda divergente $e^{\pm ikx}$ (a seconda del limite che si prende). Per la condizione $\Gamma << E_0$ risulta $k\propto\sqrt{E}$ con una piccola parte immaginaria negativa.
+\\
+Di conseguenza appare un termine $e^{+|x|}$, che è necessario, perchè se a $t=0$ in un dato punto $x$ si osserva una certo $|\psi(x)|^2$ come probabilità, al tempo $t>0$ nello stesso punto la densità di probabilità è diminuita esponenzialmente e la particella si è spostata di $vt$.
+Allora la densità di probabilità al tempo $t$ è esponenzialmente crescente rispetto a $x-vt$, valido $\forall x$, da cui l'andamento asintotico esponenzialmente crescente.
+
+\vspace{0.5cm}
+
+\subsection{Stati metastabili e spettro di decadimento}
+
+Si suppone di avere un potenziale che non ammette stati legati. \\
+Uno stato metastabile descrive una funzione d'onda $\psi_0 (r)$ che è una soluzione dell'equazione di Schr\"odinger ignorando l'Effetto Tunnel.
+Ossia descrive una particella confinata nel potenziale per un tempo lungo rispetto al periodo di oscillazione $\tau>>T\sim 2\pi/\omega \ \rightarrow \ \hbar \ 1/\tau = \hbar \gamma \equiv \Gamma << E_0=\hbar \omega$.
+\\
+Sotto queste ipotesi il sistema ha solo uno spettro continuo dell'Hamiltoniana con autostati $u_E (x)$:
+\begin{equation}
+    \psi_0 (r)=\int dE \ c(E) u_E (x) \ \ ; \ \ c(E) =\int_0 ^{\infty} \psi_0 (r) u_E (r) \ dr \ \ ; \ \ \int dE \ |c(E)|^2 =1
+\end{equation}
+
+Dove si è imposta la normalizzazione:
+\begin{equation}
+    \int u_E ^* (x) u_{E'} (x) \ dx = \delta(E-E')
+\end{equation}
+
+Dato che $u_E$ sono autostati dell'Hamiltonaina si può definire l'evoluzione temporale esatta dello stato come:
+\begin{equation}
+    \psi(x,t)=\int dE \ c(E) e^{-iEt/\hbar}u_E(x)
+\end{equation}
+Un modo empirico per osservare uno stato metastabile è studiarne i prodotti di decadimenti, per esempio le particelle $\alpha$ emesse.
+Si va allora a studiare la probabilità di osservare una particella emessa in un intorno $dE$ attorno a un dato $E$:
+\begin{equation} \label{8.6.4}
+    dP(E)=|c(E)e^{-iEt/\hbar}|^2 \ dE = |c(E)|^2 \ dE \equiv \rho(E) \ dE
+\end{equation}
+(discende dell'interpretazione probabilistica del "peso" nell'integrale per la funzione d'onda come densità di probabilità in energia).
+\\ \\
+\textit{Quali sono allora le caratteristiche da osservare per l'esistenza di uno stato metastabile?}
+\\ \\
+Bisogna stimare l'\textit{Ampiezza di permanenza} dello stato, ossia la densità di probabilità di ritrovare al tempo $t$ lo stato iniziale:
+\begin{equation} \label{8.6.5}
+    \mathcal{A}(t)=\bra{\psi(x,0)}\ket{\psi(x,t)}=\int dx \ \psi_0 ^* (x) \psi(x,t) = \int dE \ |c(E)|^2 e^{-\frac{i}{\hbar}Et}
+\end{equation}
+La (\ref{8.6.5}) è altresì nota in teoria della probabilità come \textit{funzione caratteristica} della distribuzione di probabilità (\ref{8.6.4}).
+\\
+Si può quindi definire la probabilità di permanenza dello stato:
+\begin{equation}
+    P(t)=|\mathcal{A}(t)|^2
+\end{equation}
+
+Per avere uno stato mestastabile si vuole osservare un decadimento esponenziale nella probabilità di permanenza.
+\\
+\\
+Si considera allora $\rho(E)$. \'E una funzione reale e se ne prende il prolungamento analitico in Im($E$)$>0$. La funzione presenta due poli in $E_0 \pm i\Gamma/2$, per cui in vicinanza dei poli si può fare l'approssimazione
+\begin{equation}
+    |c(E)|^2\simeq\frac{1}{(E-E_0)^2 + \Gamma^2 /4}
+\end{equation}
+Supponendo allora che lo spettro inizi da $E>0$ e di trovarsi nelle condizioni $\Gamma << E_0$ risulta che il contributo principale all'integrale sia in prossimità dei poli. Si estendono allora i limiti di integrazione da $-\infty$ a $+\infty$ e si applica il Lemma di Jordan.
+\\
+Il contributo maggiore è dato dal polo più vicino all'asse reale, quindi vale l'approssimazione
+\begin{equation}
+    \rho(E)\simeq \frac{1}{\pi}\frac{\Gamma/2}{(E-E_0)^2 + \Gamma ^2 /4}
+\end{equation}
+Ma allora si trova l'andamento per l'ampiezza di sopravvivenza, che è
+\begin{equation}
+    \mathcal{A}(t) \simeq \int dE \ \rho (E) e^{-iEt/\hbar} = e^{-iE_0 t /\hbar} e^{-\Gamma t / 2\hbar}
+\end{equation}
+Per cui la vita media dello stato metastabile dipende dalla parte immaginaria del polo (è quella che moltiplicata per $i$ restituisce l'esponenziale decrescente), secondo:
+\begin{equation}
+    |\mathcal{A}(t)|^2 \sim e^{-t/\tau} \ \ \ \ \gamma=\Gamma/\hbar=1/\tau
+\end{equation}
+Anche lo spettrodi decadimento dipende da $\Gamma$ e ha un andamento che è una Lorentziana:
+\begin{equation}
+    \rho(E) dE = \frac{1}{\pi}\frac{\Gamma/2}{(E-E_0)^2+\Gamma ^2 /4} dE
+\end{equation}
+
+\textbf{Considerazioni:}
+\begin{itemize}
+    \item Gli stati metastabili per definizione non sono stazionari, quindi possono essere creati solo in processi d'urto.
+    \item Uno stato metastabile qualora si trascuri l'Effetto Tunnel è un autostato di $H$, quindi come è possibile che gli autostati esatti di $H$ vadano a produrre una distribuzione di probabilità centrata proprio su $E_0$?
+\end{itemize}
+
+\newpage
+
+\section{Introduzione al Momento Angolare}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{zoroastro.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{9mm}
+\epigraph{Una mente soddisfatta e riflessiva è il migliore dei possedimenti.}{\textit{Zarathustra, IX-VIII secolo a.C}}
+\vspace{9mm}
+
+La \textit{Teoria del momento angolare} in Meccanica Quantistica è la teoria che amplia il discorso sulla quantizzazione del momento angolare (\ref{1.5.1}) e porta ad introdurre Spin e Isospin.
+
+\vspace{0.5cm}
+
+\subsection{Trasformazione degli stati}
+Si inizia con alcuni richiami sulle rotazioni in uno spazio Euclideo $3-D$.
+\\
+Per approfondimenti si consulti l'\textit{Antola-Benfatto} di Teoria dei Gruppi.
+\\
+Nello spazio Euclideo $E_3$ il prodotto scalare canonico è 
+\begin{equation}
+    \vec{a}\cdot \vec{b} \equiv a_i b_i
+\end{equation}
+Si richiede che una rotazione lasci invariati i prodotti scalare, ossia:
+\begin{equation} \label{9.1.2}
+    \vec{a}\cdot\vec{b} \rightarrow R_{ij}a_j R_{ik}b_k=(R_{ji})^t R_{ik}a_j b_k \overset{!}{=} \delta_{jk}a_j b_k = \vec{a}\cdot \vec{b} \ \Rightarrow \ R^t R \overset{!}{=} \mathds{1}
+\end{equation}
+Le matrici che soddisfano (\ref{9.1.2}) formano un gruppo noto come $O(3)$ (gruppo ortogonale di ordine 3).
+\begin{equation}
+    det(R^t R)= det(R)^2=det(\mathds{1}) \ \Rightarrow \ det(R)=\pm 1
+\end{equation}
+Le matrici che hanno determinante unitario formano un sottogruppo detto \textit{delle rotazioni proprie} indicato come $SO(3)$. Le matrici con determinante $-1$ si ottengono moltiplicando gli elementi di $SO(3)$ per la parità.
+\\
+\\
+A questo punto si vuole vedere come si comportano le rotazioni sugli elementi della base dello spazio qualora se ne prenda una formata da autostati dell'impulso.
+\\
+Esplicitamente:
+\begin{equation*}
+    \vec{P}\ket{\vec{p}}=\vec{p}\ket{\vec{p}}
+\end{equation*}
+
+La trasformazione $\vec{p} \ \rightarrow \ R\vec{p}$ lascia immutati i prodotti scalari, quindi, per il \textbf{Th. di Wigner} (\ref{Wigner}) è realizzata da un operatore unitario $U(R)$, la cui azione sui vettori di base è data da:
+\begin{equation} \label{9.1.4}
+    U(R)\ket{\vec{p}}=\ket{R\vec{p}}
+\end{equation}
+Dato che $U$ è unitaria ed appartiene ad un gruppo:
+\begin{equation}
+    U(R_1R_2)=U(R_1)U(R_2) \ \ \ , \ \ \ U(R^{-1})=U(R)^{-1} \ \ \ , \ \ \ U^{\dagger}(R)=U^{-1}(R)
+\end{equation}
+Prendendo il complesso coniugato della (\ref{9.1.4}) si trova:
+\begin{equation}
+    \bra{R\Vec{p}}=\bra{\Vec{p}}U^{\dagger}(R)=\bra{\vec{p}}U^{-1}(R) \ \ \rightarrow \ \ \bra{\vec{p}}U(R)=\bra{R^{-1}\vec{p}}
+\end{equation}
+Avendo definito l'azione di $U$ sui vettori di base, automaticamente ne è definita l'azione su tutto lo spazio di Hilbert.
+\\ \\
+Allo stesso modo si può definirne l'azione su una base di autostati della posizione.
+\\
+Così risulta che la funzione d'onda di uno stato ruotato è:
+\begin{equation}
+    \psi_R(x)\equiv \bra{x}U(R)\ket{\psi}=\bra{R^{-1}x}\ket{\psi}=\psi(R^{-1}x)
+\end{equation}
+La presenza di $R^{-1}$ anzichè di $R$ è necessaria per soddisfare la legge di composizione.
+
+\subsection{Trasformazioni infinitestime}
+Una rotazione infintesima viene specificata dall'asse di rotazione $\vec{n}$ e dall'angolo di rotazione $\delta \theta$.
+\\
+La rotazione viene effettuata dal vettore $\bm{\delta \theta}=\delta \theta \Vec{n}$ e per convenzione si scelgono rotazioni orarie.
+\\
+Per un vettore $\Vec{v}$ una rotazione oraria infinitesima produce una variazione:
+\begin{equation}
+    \Vec{v'}-\vec{v}=\delta \vec{v}=-\delta \theta \vec{n}\wedge \vec{v}=- \bm{\delta \theta}\wedge \vec{n}
+\end{equation}
+Perciò per una rotazione infinitesima si trova per $R^{-1}$ (mandando $-\bm{\delta \theta} \to \bm{\delta \theta}$)
+\begin{equation}
+    R^{-1}\Vec{x}\simeq \Vec{x}+\bm{\delta \theta}\wedge\Vec{x}
+\end{equation}
+Usando allora uno sviluppo di Taylor si può scrivere una trasformazione infinitesima come
+\begin{equation}
+    \psi(R^{-1}\Vec{x})\simeq \psi(\vec{x})+(\bm{\delta \theta}\wedge\Vec{x})\cdot \nabla\psi(\Vec{x})=\psi(\Vec{x})+\bm{\delta \theta}\cdot (\Vec{x}\wedge\nabla)\psi(\Vec{x})
+\end{equation}
+
+Per cui in base al \textit{Th. di Stone} (\ref{Stone}) $U(R)$ e $\mathcal{U}_R$ (la generalizzazione di $U(R)$ per realizzazioni esplicite di $\mathds{L}^2$) ammettono un generatore infinitesimale:
+\begin{equation}
+    \mathcal{U}_R\simeq \mathds{1}+i\bm{\delta \theta}\cdot \Vec{L}
+\end{equation}
+I generatori della trasformazione sono i tre operatori Hermitiani $\Vec{L}\equiv \{L_x,L_y,L_z\}$.
+\\
+In rappresentazione di Schr\"odinger il generatore delle rotazioni è l'operatore differenziale:
+\begin{equation}\label{9.2.5}
+    \Vec{L}=\frac{1}{i}\Vec{x}\wedge\nabla \ \ \ ; \ \ \ \hbar\Vec{L}=\Vec{x}\wedge\Vec{P}
+\end{equation}
+Da cui si vede che $\hbar \Vec{L}$ è il momento angolare (misurato in unità di $\hbar$).
+\\
+in componenti 
+\begin{equation}
+    L_i=\frac{1}{i}\varepsilon_{ijk}x_j\frac{\partial}{\partial x_k}
+\end{equation}
+Applicando i commutatori si trova l'algebra del gruppo:
+\begin{equation}
+    [L_i,L_j]=i \varepsilon_{ijk}L_k
+\end{equation}
+Da cui si vede che i tre generatori non commutano.
+\\
+Si può però costruire uno scalare:
+\begin{equation}
+    \Vec{L}^2=L_x ^2 +L_y ^2 +L_z ^2
+\end{equation}
+e si verifica che per ogni componente
+\begin{equation}
+    [L_i,\Vec{L}^2]=0
+\end{equation}
+
+\subsection{Autovalori e autofunzioni}
+Dato che non si possono diagonalizzare contemporaneamente le tre componenti di $\Vec{L}$ si può diagonalizzare contemporaneamente una componente ($L_z$) e $\Vec{L}^2$.
+\\
+Gli autostati vengono allora individuati da due \textit{numeri quantici} che specificano i valori di queste variabili (gli autovalori di questi operatori).
+\\
+Nello spazio delle $x$ gli operatori di rotazione agiscono sugli angoli ma non sule distanze, perciò conviene passare a coordinate radiali.
+\\
+Chiamando $\theta$ e $\varphi$ gli angoli polare e azimutale rispetto all'asse $z$, le funzioni di interesse sono della forma $f(\theta, \varphi)$.
+Le rotazioni spostano i punti su di una sfera unitaria per cui si indica lo spazio di definizione con $\Omega$.
+\\
+Per definire uno spazio di Hilbert serve un prodotto scalare. Quello di $\mathds{R}^3$ in coordinate radiali diventa
+\begin{equation}
+    d\Omega=sin(\theta)d\theta d\varphi \ \ , \ \ 0\leq \theta \leq \pi \ \ , \ \ 0\leq \varphi \leq 2\pi \ \ \Rightarrow \ \ \int d\Omega f^*(\Omega)g(\Omega)
+\end{equation}
+La misura scelta è invariante sotto rotazioni (misura invariante di Haar): $d\Omega'=d\Omega$.
+\\
+Le coordinate si scrivono:
+\begin{equation}
+    x=rsin(\theta)cos(\varphi) \ \ ; \ \ y=rsin(\theta)sin(\varphi) \ \ ; \ \ z=rcos(\theta)
+\end{equation}
+
+E a questo punto si introduce una combinazione lineare degli operatori:
+\begin{equation}
+    L_+ \equiv L_x+iL_y \ \ \ \ ; \ \ \ \ L_-\equiv L_x-iL_y
+\end{equation}
+che hanno due importanti relazioni:
+\begin{equation}
+    [L_+,L_-]=2L_z \ \ \ ; \ \ \ [L_z,L_{\pm}]=\pm L_{\pm} \ \ \ ; \ \ \ \Vec{L}^2=L_+ L_- + L_z ^2 -L_z=L_-L_++L_z^2+L_z
+\end{equation}
+
+Con il calcolo esplicito è possibile scrivere i generatori $\vec{L}$ in termini di $\theta,\varphi$:
+\begin{equation}
+    \begin{array}{lr}
+         L_z=\frac{1}{i}\frac{\partial}{\partial \varphi}  \\
+         L_{\pm}=e^{\pm i \varphi}\biggl( \pm \frac{\partial}{\partial \theta}+i cot(\theta) \frac{\partial}{\partial \varphi} \biggr) 
+    \end{array}
+\end{equation}
+Da cui si ricava:
+\begin{equation}
+    \Vec{L}^2=-\biggl[ \frac{1}{sin^2(\theta)}\frac{\partial^2}{\partial \varphi^2}+\frac{1}{sin(\theta)}\frac{\partial}{\partial \theta}\biggl( sin(\theta)\frac{\partial}{\partial \theta} \biggr) \biggr]
+\end{equation}
+Per trovare le autofunzioni di $L_z$ basta risolvere un'equazione differenziale:
+\begin{equation}
+    \frac{1}{i}\frac{\partial}{\partial \varphi}f(\varphi)=mf(\varphi) \ \ \Rightarrow \ \ f(\varphi)=Ce^{im\varphi}
+\end{equation}
+
+La richiesta che la funzione torni in sè stessa dopo giri si $2\pi$ (sia monodroma) impone che l'autovalore $m$ sia intero.
+\\
+Le autofunzioni normalizzate di $L_z$ sono
+\begin{equation}
+    \Phi_m(\varphi)=\frac{1}{\sqrt{2\pi}}e^{im\varphi} \ \ \ ; \ \ m \in \mathds{Z}
+\end{equation}
+Per $\Vec{L}^2$ e $L_z$ si possono scegliere autofunzioni della forma $F(\theta)\Phi_m(\varphi)$.
+\\
+Se allora si chiama $\Lambda$ l'autovalore bisogna risolvere l'equazione differenziale:
+
+\begin{equation}
+    \Lambda F=-\frac{1}{sin(\theta)}\frac{\partial}{\partial \theta}\biggl( sin(\theta) \frac{\partial}{\partial \theta}\biggr) F+\frac{m^2}{sin^2(\theta)}F
+\end{equation}
+che, ponendo $x\equiv cos(\theta)$, diviene:
+\begin{equation}
+    \Lambda F =-\frac{d}{dx}\biggl( (1-x^2)\frac{d}{dx}\biggr)F+\frac{m^2}{1-x^2}F \ \ \iff \ \ (1-x^2)F''(x)-2xF'(x)-\frac{m^2}{1-x^2}F+\Lambda F=0
+\end{equation}
+Ci sono due punti singolari, in $x=\pm1$.
+Se si fa uno sviluppo in serie attorno a 0 la serie diverge nei punti singolari.
+\\
+L'unico modo per avere una funzione non divergente è avere un polinomio in $x$, ossia troncare la serie.
+\\
+Affinchè ciò avvenga l'autovalore deve essere della forma:
+\begin{equation}
+    \Lambda=\ell(\ell+1) \ \ ; \ \ \ell \in \mathds{N} \ \ ; \ \ \ell \ge |m|
+\end{equation}
+cioè $\ell$ interno non negativo maggiore o uguale di $m$.
+\\
+Per $\ell$ fissato invece $m$ può assumere i valori $m=-\ell,...,\ell-1,\ell$. Per un totale di $2\ell +1$ valori.
+\\ \\
+Le autofunzioni normalizzate e complete sono dette \textit{Armoniche Sferiche} e sono:
+\begin{equation}
+ Y_{\ell m}(\theta,\varphi)=\frac{(-1)^{\ell}}{2^{\ell}\ell !}\sqrt{\frac{2\ell +1}{4\pi}\frac{(\ell +m)!}{(\ell -m)!}} e^{im\varphi}sin^{-m}(\theta)\biggl( \frac{d}{dcos(\theta)} \biggr)^{\ell-m}sin^{2\ell}(\theta)
+\end{equation}
+\begin{equation}
+    \Vec{L}^2 Y_{\ell,m}=\ell(\ell+1)Y_{\ell,m} \ \ \text{(deg: 2 $2\ell+1$)} \ \ ; \ \ \ L_z Y_{\ell,m}=mY_{\ell,m}
+\end{equation}
+Si verifica inoltre 
+\begin{equation}
+    Y_{\ell,m}^*=(-1)^m Y_{\ell,-m}
+\end{equation}
+
+\subsection{Algebra dei generatori}
+
+Si chiama il momento angolare $\Vec{J}$ (Je).
+\\
+Le regole di commutazione divengono
+\begin{equation}
+    [J_i,J_j]=i\varepsilon_{ijk}J_k
+\end{equation}
+ma possono essere riscritte tramite gli operatori di salita e discesa 
+\begin{equation}
+    J_{\pm}=J_1\pm i J_2 \ \ \ \ [J_+,J_-]=2J_3 \ \ ; \ \ [J_3,J_{\pm}]=\pm J_{\pm}
+\end{equation}
+Da cui si può riscrivere anche $\Vec{J}^2$
+\begin{equation}
+    \Vec{J}^2=J_+J_-+J_3 ^2 - J_3 =J_-J_++J_3^2+J_3
+\end{equation}
+Si vuole diagonalizzare contemporaneamente $\Vec{J}^2$ e $J_3$. Si chiama $m$ l'autovalore di $J_3$ e $j$ l'autovalore di $\Vec{J}^2$.
+\\
+Dalle regole di commutazione discende:
+\begin{equation}
+    J_3J_+\ket{j,m}=(J_+J_3+J_+)\ket{j,m}=(m+1)J_+\ket{j,m}
+\end{equation}
+Perciò $J_+\ket{j,m}$ è autovettore di $J_3$ con autovalore $m+1$.
+\\
+Analogamente
+\begin{equation}
+    J_3J_-\ket{j,m}=(m-1)\ket{j,m}
+\end{equation}
+Gli stati ottenuti sono ancora autostati di $\vec{J}^2$ dal momento che quest'ultimo commuta con $J_3$.
+\\
+Si arriva allora a costruire una torre di stati
+\begin{equation} \label{9.4.6}
+    \begin{split}
+        J_+\ket{j,m}=cte\ket{j,m+1} \\
+        J_-\ket{j,m}=cte\ket{j,m-1}
+    \end{split}
+\end{equation}
+che sono tutti autovettori di $J_3$ i cui autovalori differiscono di 1.
+\\
+La torre di stati deve interrompersi. Se si chiama $j$ il valore massimo di $m$ si trova:
+\begin{equation}
+    J_+\ket{j,j}=0 \ \ \ \text{con} \ \ \ \Vec{J}^2\ket{j,j}=(J_-J_++J_3^2+J_3)\ket{j,j}=j(j+1)\ket{j,j}
+\end{equation}
+Da cui per tutti i vettori della torre l'autovalore di $\Vec{J}^2$ è $j(j+1)$. Ma anche applicando $J_-$ la torre deve interrompersi:
+\begin{equation}
+    j_-\ket{j,j-s}=0 \ \ \ \text{con} \ \ \ \Vec{J}^2\ket{j,j-s}=(J_+J_-+J_3^2-J_3)\ket{j,j-s}=((j-s)^2-(j-s))\ket{j,j-s}
+\end{equation}
+Eguagliando le due relazioni trovate
+\begin{equation}
+    (j-s)^2-(j-s)=(j-s)(j-s-1)=j(j+1) \ \ \Rightarrow \ \ s-j=j \ \to s=2j \in \mathds{N}
+\end{equation}
+Si è trovato:
+\begin{itemize}
+    \item I valori possibili di $j$ sono gli interi o i seminteri.
+    \item il valore di $m$ spazia tra $-j$ e $j$ con $2j+1$ valori possibili.
+    \item L'autovalore di $\Vec{J}^2$ è $j(j+1)$ con degenerazione $2j+1$.
+\end{itemize}
+
+\subsection{Elementi di matrice di \texorpdfstring{$J$}{Lg}}
+
+Un autovalore di $\Vec{J}^2$ è un elemento diagonale di matrice e scrivendolo tramite un insieme completo distati è:
+\begin{equation}
+    j(j+1)=\sum_{j',m'}\bra{j,m}J_+\ket{j',m'}\bra{j,m}J_-\ket{j',m'}+m^2-m
+\end{equation}
+Dato che è una matrice diagonale si ha $j'=j$ e per la (\ref{9.4.6}) si ha $m'=m-1$, perciò
+\begin{equation}
+    \bra{j,m}J_+\ket{j,m-1}\bra{j,m-1}J_-\ket{j,m}\equiv |\bra{j,m-1}J_-\ket{j,m}|^2=j(j+1)-m^2+m=(j+m)(j-m+1)
+\end{equation}
+Per fissare gli stati bisogna operare una scelta di fase e adottando la \textit{convenzione di Condon-Shortley} si sceglie di prendere la radice dell'espressione trovata col segno positivo.
+\\
+Ne consegue che si trova:
+\begin{equation}
+    J_{\pm}\ket{j,m}=\sqrt{j(j+1)-m(m\pm1)}\ket{j,m\pm 1}
+\end{equation}
+
+\newpage
+\section{Momento angolare e rotazioni}
+
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{ipazia.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{9mm}
+\epigraph{Capire ciò che ci circonda è la migliore preparazione per capire ciò che sta al di là.}{\textit{Ipazia, 350-415 a.C}}
+\vspace{9mm}
+
+In questo capitolo viene ampliata la trattazione della teoria del momento angolare sia dal punto di vista gruppale che fisico.
+
+\vspace{0.5cm}
+\subsection{Gruppo \textit{SO(3)}}
+Il gruppo delle rotazioni è quello delle trasformazioni lineari da $\mathds{R}^3$ in se stesso che lasciano invariante il prodotto scalare euclideo.
+\\
+Si tratta di matrici $R$ \textit{ortogonali} con determinante $+1$.
+\begin{equation}
+    R \in SO(3) \ \ \ \ \ \ \ \ R^{-1}=R^t \ \ \ \ \ \ \ \ det(R)=1
+\end{equation}
+Esistono tre rotazioni indipendenti attorno ai tre assi cartesiani.
+\\
+Si adotta il punto di vista attivo e per convenzione si considerano rotazioni orarie.
+\begin{equation}
+    R_z=\begin{pmatrix}
+    cos\ \theta & sin\ \theta & 0 \\
+    -sin\ \theta & cos\ \theta & 0 \\
+    0 & 0 & 1 
+    \end{pmatrix} \ \ \ \ \ \ R_x=\begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & cos \ \theta & sin \ \theta \\
+    0 & -sin \ \theta & cos \ \theta
+    \end{pmatrix} \ \ \ \ \ \ R_y=\begin{pmatrix}
+    cos \ \theta & 0 & -sin \ \theta \\
+    0 & 1 & 0 \\
+    sin \ \theta & 0 & cos \ \theta
+    \end{pmatrix}
+\end{equation}
+
+Si può trovare la struttura infinitesima delle trasformazioni considerando il termine lineare in $\theta \to 0$.
+\begin{equation}
+    R_z \to \begin{pmatrix}
+    1 & \theta & 0 \\
+    -\theta & 1 & 0 \\
+    0 & 0 & 1
+    \end{pmatrix}=\mathds{1}+\theta \begin{pmatrix}
+    0 & 1 & 0 \\
+    -1 & 0 & 0 \\
+    0 & 0 & 0
+    \end{pmatrix} \equiv \mathds{1}+\theta \delta R_z
+\end{equation}
+La matrice $\delta R_z$ è antisimmetrica, condizione valida per tutti gli $SO(n)$. Infatti:
+\begin{equation}
+    \mathds{1}=RR^t=(\mathds{1}+\theta \delta R)(\mathds{1}+\theta \delta R^t)\simeq \mathds{1}+\theta (\delta R+\delta R^t) \ \ \Rightarrow \ \ \delta R = - \delta R^t
+\end{equation}
+Si preferisce passare dalle matrici simmetriche a quelle Hermitiane dal momento che queste ricoprono un ruolo particolare in Meccanica Quantistica.
+\\
+Si introducono allora le $\Sigma_a$:
+\begin{equation}
+    R\simeq \mathds{1}+i\bm{\theta} \bm{\Sigma}
+\end{equation}
+Al primo ordine in $\theta$ si trova:
+\begin{equation}
+    i\Sigma_z \equiv i \Sigma_3 = \begin{pmatrix}
+    0 & 1 & 0 \\
+    -1 & 0 & 0 \\
+    0 & 0 & 0
+    \end{pmatrix} \ \ , \ \ i\Sigma_x \equiv i \Sigma_1 = \begin{pmatrix}
+    0 & 0 & 0 \\
+    0 & 0 & 1 \\
+    0 & -1 & 0
+    \end{pmatrix} \ \ , \ \ i\Sigma_y \equiv i \Sigma_2 = \begin{pmatrix}
+    0 & 0 & -1 \\
+    0 & 0 & 0 \\
+    1 & 0 & 0
+    \end{pmatrix}
+\end{equation}
+Anche indicate come:
+\begin{equation}
+    (\Sigma^i)_{\alpha \beta}=-i \varepsilon_{i \alpha \beta}
+\end{equation}
+I generatori infinitesimali $\Sigma^i$ soddisfano alle regole di commutazione:
+\begin{equation}
+    [\Sigma_i,\Sigma_j]=i\varepsilon_{ijk}\Sigma_k
+\end{equation}
+Le matrici $i\Sigma^i$ formano una base dello spazio vettoriale delle matrici antisimmetriche $3\times 3$.
+\\
+Tale spazio vettoriale è chiuso per commutazione:
+\begin{equation}
+    C=[A,B] \ \ \ \ ; \ \ \ \ C^t=-[A,B]=-C^t
+\end{equation}
+Uno spazio vettoriale su cui sia definita un'operazione antisimmetrica bilineare in cui valga l'\textit{identità di Jacobi}:
+\begin{equation} \label{Jacobi}
+    [A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0
+\end{equation}
+si chiama \textit{Algebra di Lie}.
+\\
+I generatori infinitesimali di $SO(3)$ formano un'algebra di Lie: $so(3)$.
+\\
+Per un gruppo generico gli elementi infinitesimali soddisfano a una relazione del tipo:
+\begin{equation}
+    [T^a,T^b]=if_{abc}T^c
+\end{equation}
+Dove $f_{abc}$ sono dette \textit{costanti di struttura}.
+\\
+Nel caso di $so(3)$ le costanti sono proprio $\varepsilon_{ijk}$.
+
+\vspace{0.5cm}
+\subsection{Rotazioni finite}
+Ogni rotazione finita si può ottenere a partire dai generatori infinitesimi secondo:
+\begin{equation} \label{10.2.1}
+    R(\bm{\theta})=e^{i\bm{\theta}\cdot \bm{\Sigma}}
+\end{equation}
+Ossia, la funzione esponenziale è un'applicazione surgettiva tra l'algebra e il gruppo.
+\\
+Si ponga $\bm{\theta}\equiv \theta \Vec{n}$, per un generico vettore $\Vec{v}$ la sua proiezione su $\Vec{n}$ e quella ortogonale sono:
+\begin{equation}
+   \Vec{v}_n=(\Vec{v}\cdot \Vec{n})\Vec{n} \ \ \ ; \ \ \ \ \ \Vec{v}_p=\Vec{v}-\Vec{v}_n =\Vec{v}-(\Vec{v}\cdot \Vec{n})\Vec{n}
+\end{equation}
+La situazione fisica è mostrata in Figura (\ref{rot}):
+
+\begin{figure}[hb]
+\begin{center}
+\includegraphics[scale=0.35]{rotazione.JPG}
+\end{center}
+\caption{Rotazione oraria intorno a $\vec{n}$}
+\label{rot}
+\end{figure}
+
+Consiste nella trasformazione:
+\begin{equation} \label{10.2.3}
+    \Vec{v}'=\Vec{v}_n+\Vec{v}_p cos \ \theta - (\Vec{n}\wedge\Vec{v})sin \ \theta
+\end{equation}
+Se si sviluppa la (\ref{10.2.3}) per piccoli $\theta$ si trova la trasformazione infinitesima:
+\begin{equation} \label{10.2.4}
+    \delta \Vec{v}=\Vec{v}'-\Vec{v}=(\Vec{v}_n + \Vec{v}_p - \Vec{n}\wedge\Vec{v} \ \theta)-\Vec{v}=-\theta \ \Vec{n} \wedge \Vec{v}
+\end{equation}
+
+Si procede ora a sviluppare l'esponenziale in (\ref{10.2.1}) per mostrare che si trova lo stesso risultato che in (\ref{10.2.4}):
+\begin{equation}
+    e^{i\theta \Vec{n}\bm{\Sigma}} \ \Vec{v} \ \simeq \ \Vec{v}+i\theta \ \Vec{n}\cdot \bm{\Sigma} \cdot \Vec{v} \ \ \Rightarrow \ \ \delta \Vec{v}_i=\theta n_{\alpha}\varepsilon_{\alpha i j}\Vec{v}_j=-\theta \ (\Vec{n}\wedge\Vec{v})_i
+\end{equation}
+Conseguentemente andando a considerare gli ordini successivi dello sviluppo si trova la trasformazione finita.
+
+\vspace{0.5cm}
+\subsection{Rappresentazione di un gruppo}
+
+Dato un gruppo $G$ e uno spazio vettoriale $V$ si definisce \textit{Rappresentazione} del gruppo $G$ su $V$ una corrispondenza tra gli elementi di $G$ e gli operatori lineari su $V$ che preservi le operazioni di gruppo:
+\begin{equation}
+    g_1 g_2 =g_3 \ \Rightarrow \ U(g_1)U(g_2)=U(g_1 g_2)=U(g_3) \ \ \ \ \ \ e\to U(e)=\mathds{1}
+\end{equation}
+In tutti i casi in esame si cercano rappresentazioni di gruppi sullo spazio di Hilbert $\mathcal{H}$ costituite da operatori unitari, dal momento che per il \textit{Th. di Wigner} (\ref{Wigner}) una simmetria del sistema deve essere rappresentata da un operatore unitario.
+
+\vspace{0.5cm}
+\subsection{Rappresentazioni irriducibili}
+Se due rappresentazioni, $D_1(g)$ e $D_2(g)$, si ottengono l'una dall'altra tramite una relazione di similitudine:
+\begin{equation}
+    D_2(g)=SD_1(g)S^{-1}
+\end{equation}
+le rappresentazioni si dicono \textit{equivalenti} e sono sostanzialmente la stessa rappresentazione in basi diverse dello spazio.
+\begin{itemize}
+    \item Se $S$ è unitaria, le rappresentazioni sono \textit{unitariamente equivalenti}.
+    \item Una rappresentazione si dice \textit{riducibile} se esiste un sottospazio vettoriale $V_1 \subset V$ invariante per l'azione di $G$:
+    \begin{equation}
+        \forall g \in G \ ; \ D(g)v_1 \in V_1 \ \ \forall v_1 \in V_1
+    \end{equation}
+\end{itemize}
+Se la rappresentazione è riducibile, allora la matrice che rappresenta gli elementi di $G$ è del tipo:
+\begin{equation}
+    D(g)=\begin{pmatrix}
+    A & X \\ 0 & B
+    \end{pmatrix}
+\end{equation}
+Così si vede immediatamente che se un vettore appartiene a $V_1$:
+\begin{equation}
+    \begin{pmatrix}
+    A & X \\ 0 & B
+    \end{pmatrix} \begin{pmatrix}
+    v_1 \\ 0
+    \end{pmatrix} = \begin{pmatrix}
+    Av_1 \\ 0
+    \end{pmatrix} \in V_1
+\end{equation}
+E se anche il complementare di $V_1$, $V_2$, è invariante, allora $X=0$ e la matrice è fatta a blocchi.
+\\
+In questo caso la rappresentazione è detta \textit{completamente riducibile}.
+\begin{itemize}
+    \item Se la rappresentazione è unitaria, allora è completamente riducibile.
+    \item Una rappresentazione che non ha sottospazi invarianti si dice \textit{irriducibile}.
+\end{itemize}
+
+In generale un gruppo si può pensare come l'insieme dei suoi elementi.
+\\
+Per esempio un gruppo di matrici reali $n \times n$ forma un sottoinsieme di $\mathds{R}^{n^2}$.
+\\
+I gruppi vengono però anche definiti da condizioni suoi suoi elementi che si traducono in una serie di vincoli sulle dimensioni dello spazio ambiente.
+\\
+Questo va ad individuare una "superficie", chiamata \textit{varietà}.
+Nel caso precedente la dimensione della varietà è $n^2$ meno il numero di vincoli.
+\\
+Se la varietà è compatta, anche il gruppo si dice \textit{compatto}. $SO(n)$ e $SU(n)$ sono compatti.
+\begin{itemize}
+    \item Tutte le rappresentazioni di un gruppo compatto sono equivalenti a rappresentazioni unitarie.
+    \item Tutte le rappresentazioni di un gruppo compatto sono completamente riducibili.
+\end{itemize}
+Ossia per le rappresentazioni compatte è possibile scegliere una base in cui le matrici associate agli elementi del gruppo sono a blocchi.
+Conseguentemente per conoscere l'azione del gruppo basta conoscere l'azione dei blocchi sui sottospazi su cui agiscono.
+
+\vspace{0.5cm}
+
+\subsection{Lemmi di Sch\"ur}
+Si riportano due Lemmi noti di Teoria dei Gruppi, la cui dimostrazione può essere trovata sull'\textit{Antola-Benfatto}.
+\begin{lemma}[\textbf{Lemma di Sch\"ur 1}]
+Se $D_1$ e $D_2$ sono due rappresentazioni irriducibili di $G$ in due spazi $V_1$ e $V_2$ e se esiste un operatore $A:V_1 \to V_2$ tale che:
+\begin{equation}
+    AD_1(g)=D_2(g)A \ \ \ \ \ \ \forall g \in G
+\end{equation}
+allora o $A=0$ o $A$ è una bigezione.
+\end{lemma}
+
+\begin{lemma}[\textbf{Lemma di Sch\"ur 2}] \label{Schur}
+Se $D$ è una rappresentazione irriducibile in $\mathds{C}^n$ e se esiste un operatore $B$ che commuta con tutte le $D(g)$, allora $B$ è un multiplo dell'identità.
+\end{lemma}
+
+\vspace{0.5cm}
+\subsection{Il gruppo e l'algebra}
+Se si riuscisse a costruire tutte le rappresentazioni irriducibili di un gruppo, si sarebbe in grado di classificare tutti i modi in cui il gruppo delle rotazioni agisce nello spazio di Hilbert.
+\\
+Per farlo si parte dai generatori infinitesimali. Ogni rotazione può essere scritta:
+\begin{equation}
+    R(\bm{\theta})=e^{i\bm{\theta}\cdot \bm{\Sigma}}
+\end{equation}
+E intorno all'identità, per piccoli $\theta$, l'esponenziale è invertibile, per cui si sceglie di non classificare le rappresentazioni degli elementi del gruppo, ma dei generatori $\Sigma$.
+\\
+La regola di prodotto del gruppo sarà allora:
+\begin{equation}
+    R_2=e^{i\bm{\theta}_2 \bm{\Sigma}} \ \ ; \ \ \ R_1=e^{i\bm{\theta}_1 \bm{\Sigma}} \ \ ; \ \ \ R_3=R_2R_1=e^{i\bm{\theta}_3\bm{\Sigma}}
+\end{equation}
+E $\theta_3$ è una qualche funzione di $\theta_1, \theta_2$.
+\\
+\\
+Ma si può ottenere di più.
+\\
+Le matrici $i\bm{\Sigma}$ sono reali e antisimmetriche e formano un'algebra di Lie:
+\begin{equation}
+    [\Sigma_i,\Sigma_j]=i\varepsilon_{ijk}\Sigma_k
+\end{equation}
+Dal momento che quindi devono soddisfare all'\textit{Identità di Jacobi} (\ref{Jacobi}), l'espressione $\bm{\theta}_3\bm{\Sigma}$ deve essere formata solo da somme di generatori e da loro commutatori.
+\\
+Si può dimostrare al primo ordine in $\theta_1, \theta_2$ con la formula di Baker-Haussdorff:
+\begin{equation}
+    e^A e^B \simeq e^{A+B+\frac{1}{2}[A,B]}
+\end{equation}
+Posto $A=i\bm{\theta}_2 \bm{\Sigma}$ e $B=i\bm{\theta}_1 \bm{\Sigma}$ si trova nel caso di $SO(3)$:
+\begin{equation}
+    R_3\simeq e^{i(\bm{\theta}_2+\bm{\theta}_1)\bm{\Sigma}-\frac{1}{2}[\bm{\theta}_2\bm{\Sigma},\bm{\theta}_1\bm{\Sigma}]}
+\end{equation}
+Dove
+\begin{equation}
+    [\bm{\theta}_2\bm{\Sigma},\bm{\theta}_1\bm{\Sigma}]=i(\bm{\theta}_2 \wedge \bm{\theta}_1)\bm{\Sigma} \ \ \ \Rightarrow \ \ \ \bm{\theta}_3=\bm{\theta}_2 + \bm{\theta}_1 - \frac{1}{2}\bm{\theta}_2 \wedge \bm{\theta}_1
+\end{equation}
+
+\vspace{0.5cm}
+\subsection{Rappresentazioni irriducibili dell'algebra}
+
+L'idea di fondo sarebbe costruire le rappresentazioni irriducibili dell'algebra e, tramite la loro esponenziazione, costruire quelle del gruppo.
+\\
+Per le rotazioni si ha l'algebra:
+\begin{equation}
+     [\Sigma_i,\Sigma_j]=i\varepsilon_{ijk}\Sigma_k
+\end{equation}
+E una sua rappresentazione è un omomorfismo sullo spazio degli operatori autoaggiunti che preservi l'algebra:
+\begin{equation}\label{alg}
+    \Sigma_i \to J_i \ \ \ ; \ \ \ \ J_i:V\to V \ \ \ \ \text{tale che} \ \ \ [J_i,J_k]=i \varepsilon_{ijk}J_k
+\end{equation}
+
+Gli operatori $J$ per essere elementi di una rappresentazione irriducibile devono soddisfare a (\ref{alg}) e non avere sottospazi invarianti.
+\\
+La costruzione per il gruppo delle rotazioni è stata effettuata nella sezione precedente, introducendo gli operatori di salita e discesa.
+\begin{equation}
+    J_{\pm}=J_1\pm i J_2 \ \ \Rightarrow \ \ [J_+,J_-]=2J_3 \ , \ \ [J_3,J_+]=J_+ \ , \ \ [J_3,J_-]=-J_-
+\end{equation}
+con il modulo quadro del momento angolare come operatore di Casimir:
+\begin{equation}
+    \Vec{J}^2=J_+J_-+J_3^2-J_3=J_-J_++J_3^2+J_3
+\end{equation}
+si riportano i risultati:
+\begin{itemize}
+    \item Gli autovalori di $\Vec{J}^2$ valgono $J(J+1)$ con $2J$ intero.
+    \item Una base della rappresentazione è data dagli autovettori di $\Vec{J}^2$ e di $J_3$, per cui i vettori di base si scrivono, in base agli autovalori di tali operatori, come:
+    \begin{equation}
+        \ket{j,m} \ \ \ \text{tali che} \ \ \ \Vec{J}^2\ket{j,m}=j(j+1)\ket{j,m} \ \ , \ \ J_3\ket{j,m}=m\ket{j,m}
+    \end{equation}
+    con $|m|\le J$, intero o semintero. La dimensione della rappresentazione è $2j+1$.
+    \item La matrice di $J_3$ è diagonale e le matrici di $J_{\pm}$ hanno solo gli elementi sopra e sotto diagonale non nulli:
+    \begin{equation}
+        \bra{j,m-1}J_-\ket{j,m}=\bra{j,m}J_+\ket{j,m-1}=\sqrt{(j+m)(j-m+1)}
+    \end{equation}
+\end{itemize}
+A questo punto a partire dalle matrici componenti di $\Vec{J}$ si possono costruire esplicitamente le matrici del gruppo:
+\begin{equation}
+    D_{m'm}^{(j)}=(e^{i\bm{\theta}\Vec{J}})_{m'm}
+\end{equation}
+Ma il problema di $SO(3)$ è che il risultato matematico suggerisce qualcosa in più di quanto atteso.
+\\
+Se si considera una rotazione di $2\pi$ attorno a un asse gli autovalori sono $e^{i2\pi m}$.
+\\
+Ma per $m$ semintero questa trasformazione non è l'identità, come dovrebbe essere in $SO(3)$:
+\begin{equation}
+    e^{i\theta m} \ \xrightarrow[\text{rotazione di $2\pi$}]{m=n/2, \ n\in \mathds{N}} \ e^{i(\theta + 2\pi)\frac{n}{2}}=e^{i\theta n}e^{i\pi n}=-e^{i\theta n/2}
+\end{equation}
+Ma risulta essere pari a $-\mathds{1}$.
+\\
+Le domande che ci si pone a questo punto sono:
+\begin{enumerate}
+    \item Le rappresentazioni con $j$ semintero cosa sono? Esistono in Natura?
+    \item Se esistono, sono una rappresentazione di $SO(3)$?
+\end{enumerate}
+
+Si riportano due argomenti, uno matematico e uno fisico, in risposta:
+\begin{itemize}
+    \item Matematicamente, \textit{tutte} le rappresentazioni del gruppo si ottengono dall'algebra.
+    \\
+    Il viceversa non è però vero, non tutte le rappresentazioni dell'algebra sono rappresentazioni del gruppo.
+    \\
+    Dal momento che $so(3)\sim su(2)$ si scopre che quelle con $j$ semintero sono rappresentazioni di $SU(2)$, o (è equivalente) rappresentazioni \textit{proiettive} (trattate più avanti) di $SO(3)$.
+    \item Fisicamente si è supposto che un oggetto nel proprio sistema di riferimento trasformi come uno scalare sotto rotazioni.
+    \\
+   \label{terra-sole}Ma se si considera il sistema Terra-Sole, è come dire che nel sistema di riferimento in cui la Terra è ferma applicarvi una rotazione non apporta cambiamenti.
+    \\
+    Chiaramente era sbagliato il punto di partenza del ragionamento.
+\end{itemize}
+
+\vspace{0.5cm}
+\subsection{Il gruppo \textit{SU(2)}}
+Il gruppo $SU(2)$ è quello delle matrici $2\times 2$ unitarie con determinante $+1$.
+\begin{equation}
+    U=\begin{pmatrix}
+    a & b \\ c & d
+    \end{pmatrix} \ \ ; \ \ \ \ a,b,c,d \in \mathds{C}
+\end{equation}
+Le condizioni $U^{\dagger}U=\mathds{1}$ e $det(U)=1$ impongono:
+\begin{equation}
+    U=\begin{pmatrix}
+    a & b \\ -b^* & a^*
+    \end{pmatrix} \ \ \ \ \ \ \ \text{con} \ \ \ \ |a|^2+|b|^2=1
+\end{equation}
+Se si scrive $a=x_1 +ix_2$ e $b=x_3 + i x_4$ la condizione sopra identifica una superficie sferica in $\mathds{R}^4$: la sfera $S_3$.
+\\
+Topologicamente dunque $SU(2)$ è identificato con la varietà $S_3$.
+\\
+Tutte le superfici sferiche sono semplicemente connesse, da cui ammettono generatori infinitesimali.
+\\
+Si scrive esplicitamente la forma di una trasformazione infinitesima:
+\begin{equation}
+    U=e^{itA}\simeq \mathds{1}+itA \ \Rightarrow \ U^{\dagger}U\simeq \mathds{1}+it(A-A^{\dagger})+\mathcal{O}(t^2)
+\end{equation}
+
+Dal momento che $U^{\dagger}U=\mathds{1}$, risulta $A=A^{\dagger}$, da cui si evince che $A$ deve essere Hermitiana.
+\\
+Inoltre, diagonalizzando $A$, si trova:
+\begin{equation}
+    det(U)=e^{iTr(A)} \ \xrightarrow{det(U)=1} \ Tr(A)=0
+\end{equation}
+Una base per le matrici Hermitiane $2\times 2$ a traccia nulla è data dalle matrici di Pauli:
+\begin{equation}
+    \sigma_x\equiv \sigma_1=\begin{pmatrix}
+    0 & 1 \\ 1 & 0
+    \end{pmatrix} \ \ \ ; \ \ \ \sigma_y\equiv \sigma_2=\begin{pmatrix}
+    0 & -i \\ i & 0
+    \end{pmatrix} \ \ \ ; \ \ \ \sigma_z\equiv \sigma_3=\begin{pmatrix}
+    1 & 0 \\ 0 & -1
+    \end{pmatrix}
+\end{equation}
+Da cui si può scrivere un generico elemento di $SU(2)$ come:
+\begin{equation}
+    U=e^{i\bm{\theta}\bm{\sigma}/2}
+\end{equation}
+Dal momento che le matrici di Pauli soddisfano all'algebra:
+\begin{equation}
+    \sigma_i \sigma_j=\delta_{ij}+i \varepsilon_{ijk}\sigma_k
+\end{equation}
+Discende che per i generatori di $SU(2)$, $s_i$, vale:
+\begin{equation}
+    s_i=\frac{1}{2}\sigma_i \ \ \ \ ; \ \ \ \ [s_i,s_j]=i \varepsilon_{ijk}s_k
+\end{equation}
+
+Cioè i generatori di $SU(2)$ soddisfano alla stessa algebra di Lie dei generatori di $SO(3)$ (come anticipato sopra).
+\\
+Usando le regole di moltiplicazione per le matrici di Pauli si trova:
+\begin{equation}
+    U(\bm{\theta})=e^{i\bm{\theta}\cdot \Vec{s}}\equiv e^{i 1/2 \bm{\theta}\cdot \Vec{s}}=cos(\theta/2)+i \Vec{n}\cdot \bm{\sigma}sin(\theta/2)
+\end{equation}
+Considerando ad esempio $\Vec{n}$ lungo $z$ si trova la trasformazione identica per $\theta \in [0,4\pi]$, \\ mentre $U(\theta+2\pi)=-U(\theta)$.
+
+\vspace{0.5cm}
+\subsection{Connessione tra \textit{SU(2)} e \textit{SO(3)}}
+
+Si può mostrare che esiste un omomorfismo naturale tra $SU(2)$ e $SO(3)$.
+\\
+Si denota con $V_3$ il gruppo delle matrici Hermitiane $2\times 2$ a traccia nulla.
+\\
+In $V_3$ un vettore generico ha la forma:
+\begin{equation}
+    A=a\cdot\bm{\sigma}=\begin{pmatrix}
+    a_3 & a_1-ia_2 \\ a_1+ia_2 & -a_3
+    \end{pmatrix}
+\end{equation}
+Se si indica con $U(\theta)$ una qualsiasi trasformazione di $SU(2)$, allora la trasformazione
+\begin{equation}
+    A\ \to \ A'=UAU^{\dagger}
+\end{equation}
+lascia invariato $det(A)=-\Vec{a}^2$, ossia il modulo del vettore $\Vec{a}$. Si tratta infatti di una rotazione di $\Vec{a}$.
+\\
+Si può quindi associare ad ogni $g\in SU(2)$ una matrice $R\in SO(3)$ secondo:
+\begin{equation}
+    \phi:SU(2) \to SO(3) \ \ , \ \ \ \ \phi:g\to R
+\end{equation}
+$\phi$ è un omomorfismo tra gruppi e il suo Kernel è dato dal sottogruppo di $SU(2)$ che ha come immagine $\mathds{1}$.
+\\
+Questo Kernel è chiaramente formato da $\mathds{1}$ e $-\mathds{1}$.
+Queste due formano il gruppo discreto di due elementi: $\mathds{Z}_2$.
+\\
+Risulta allora 
+\begin{equation}
+    SO(3)\sim SU(2)/\mathds{Z}_2
+\end{equation}
+Dove $SU(2)/\mathds{Z}_2$ indica il coset o gruppo quoziente.
+\\
+Dal punto di vista delle varietà si dice che $SU(2)$ è il \textit{ricoprimento universale} di $SO(3)$; nel senso che è uno spazio localmente identico a $SO(3)$ in cui l'omomorfismo $\phi$ agisce da proiezione.
+\\
+Ogni elemento di $SO(3)$ ha due immagini: $g$ e $-g$, che vengono identificate tramite la proiezione.
+\\
+Ciò che avviene a livello gruppale è che l'esponenziazione di qualsiasi algebra di Lie fornisce una rappresentazione semplicemente connessa.
+\\
+$SO(3)$ non è semplicemente connesso, ha infatti come gruppo di omotopia $\mathds{Z}_2$.
+\\
+Estraendone l'algebra e effettuandone l'esponenziazione si è trovato il suo ricoprimento universale, cioè $SU(2)$, che è una rappresentazione semplicemente connessa.
+
+\vspace{0.5cm}
+\subsection{Introduzione dello Spin}
+
+La definizione di momento angolare data in (\ref{9.2.5})
+\begin{equation}
+    \hbar \Vec{L}=\Vec{r}\wedge\Vec{p}
+\end{equation}
+si basava sul fatto che l'insieme di stati $\ket{\Vec{p}}$ fosse sufficiente a descrivere un sistema, ma si è visto che questo non è verificato.
+\\
+Anche nel caso di una particella isolata, oltre all'impulso del centro di massa, bisogna definire un insieme di numeri quantici che descrivano la struttura interna.
+\\
+Si suppone allora che una base di stati sia
+\begin{equation}\label{10.10.2}
+    \ket{\Vec{p}.\alpha}
+\end{equation}
+dove $\alpha$ sono eventuali numeri quantici dovuti ad altre osservabili.
+\\
+L'ipotesi fatta nella sezione precedente era che le $\alpha$ fossero invarianti sotto rotazioni, ma questo non è vero in generale.
+\\
+Si dovrà avere una trasformazione del tipo
+\begin{equation}\label{10.10.3}
+    U(R)\ket{\Vec{p},\alpha}=\sum_{\alpha' \alpha}C_{\alpha' \alpha}\ket{R\Vec{p},\alpha'}
+\end{equation}
+La richiesta che la rotazione sia una simmetria del sistema va a porre dei vincoli sui valori di $C_{\alpha'\alpha}$.
+\\ \\
+\'E possibile però anche fare una differente scelta di base, dimostrando che ci si può ricondurre alla (\ref{10.10.2}).
+\\
+Per ritrovare l'analogia con l'esempio della Terra e del Sole (\ref{terra-sole}), si considerino due particelle, per ognuna delle quali si ha un insieme completo $\ket{\Vec{p}_1},\ket{\Vec{p}_2}$.
+\\
+Il sistema composto da entrambe ha come vettori di base
+\begin{equation}
+    \ket{\Vec{p}_1,\Vec{p}_2}
+\end{equation}
+E una rotazione viene definita come
+\begin{equation}
+    U(R)\ket{\Vec{p}_1,\Vec{p}_2}=\ket{R\Vec{p}_1,R\Vec{p}_2}
+\end{equation}
+per cui è una trasformazione unitaria.
+\\
+Il momento angolare totale del sistema è
+\begin{equation}
+    \hbar\Vec{J}=\Vec{r}_1 \wedge \Vec{p}_1 + \Vec{r}_2 \wedge \Vec{p}_2
+\end{equation}
+Per portare questa base nella forma della (\ref{10.10.2}) si può passare alla base
+\begin{equation}
+    \ket{\Vec{P},\Vec{p}}
+\end{equation}
+dove $\Vec{P}$ è l'impulso del centro di massa e $\Vec{p}$ l'impulso relativo.
+\\
+Le rotazioni agiscono come
+\begin{equation}
+    U(R)\ket{\Vec{P},\Vec{p}}=\ket{R\Vec{P},R\Vec{p}}
+\end{equation}
+con un momento angolare
+\begin{equation}
+    \hbar\Vec{J}=\Vec{R}\wedge\Vec{P}+\Vec{r}\wedge\Vec{p}
+\end{equation}
+Il secondo operatore è il \textit{momento angolare orbitale nel centro di massa} e commuta con le traslazioni (con $\Vec{P}$).
+\\
+Si può semplificare questa scelta di base passando ai numeri quantici interni $E,\ell,m$ (Energia, autovalore del momento angolare totale, autovalore di $L_z$), per cui la base diventa:
+\begin{equation}
+    \ket{\Vec{P},E,\ell,m}
+\end{equation}
+Su cui le rotazioni agiscono secondo la (\ref{10.10.3})
+\begin{equation}
+    U(R)\ket{\Vec{P},E,\ell,m}=D_{m'm}^{(\ell)}(R)\ket{R\Vec{P},E,\ell,m'}
+\end{equation}
+In questo modo si vede che $\Vec{L}$ è il momento angolare del sistema a riposo.
+\\
+Se si pone $\Vec{P}=\vec{0}$ si trova
+\begin{equation}
+    U(R)\ket{\Vec{0},E,\ell,m}=D_{m'm}^{(\ell)}(R)\ket{\Vec{0},E,\ell,m'}
+\end{equation}
+e l'effetto delle rotazioni si manifesta sulle variabili interne.
+\\
+Il momento angolare a riposo per qualsiasi sistema si chiama \textbf{spin}.
+\\
+Chiamando lo spin $\Vec{S}$ e il momento angolare del centro di massa $\Vec{L}$, il momento angolare totale è
+\begin{equation}\label{J}
+    \Vec{J}=\Vec{L}+\Vec{S}
+\end{equation}
+
+In quest'ottica la base per gli stati di una particella è
+\begin{equation}
+    \ket{\Vec{p},S,\sigma}
+\end{equation}
+dove $\sigma$ indica la componente di $S_z$ e l'energia è stata omessa perchè è possibile identificarla con la massa che si suppone costante.
+\\
+Per una particella libera l'esistenza o meno di $S$ significa che gli stati a energia fissa sono $2S+1$ volte degeneri (valori possibili per $\sigma$).
+\\
+Per una particella con Hamiltoniana
+\begin{equation}
+    H_0=\frac{\Vec{p}^2}{2m}
+\end{equation}
+sia il momento angolare orbitale che lo spin sono costanti del moto.
+\\
+A cosa è servito allora definire $\Vec{J}$ come in (\ref{J})?
+\\
+\'E servito perchè in presenza di campi esterni $\Vec{p}$ e $\Vec{S}$ sono accoppiati, quindi si ha dipendenza l'uno dall'altro.
+\\
+In sistemi come l'atomo di Idrogeno è presente un accoppiamento nell'Hamiltoniana del tipo
+\begin{equation}
+    A\Vec{L}\cdot \Vec{S}
+\end{equation}
+che non è invariante per rotazioni separate di $\Vec{L}$ o $\Vec{S}$, ma lo è per rotazioni contemporanee di entrambe, cioè $\Vec{LS}$ è uno scalare.
+
+\vspace{0.5cm}
+\subsection{Funzioni d'onda e Spin}
+Si suppone di avere una particella di spin $s$. Una base per gli stati è $\ket{\Vec{p},s,\sigma}$, ma, dato che $s$ è una caratteristica intrinseca della particella, lo si sottintende.
+\\
+Uno stato del sistema viene allora caratterizzato da un'ampiezza
+\begin{equation}
+    \bra{\Vec{p},\sigma}\ket{\Psi} \ \ \ \ \ \ \text{oppure, in rappresentazione delle coordinate} \ \ \ \ \ \ \bra{\Vec{x},\sigma}\ket{\Psi}
+\end{equation}
+La cui interpretazione probabilistica è sempre che
+\begin{equation}
+    |\bra{\Vec{x},\sigma}\ket{\Psi}|^2 d^3\Vec{x}
+\end{equation}
+è la probabilità di trovare la particella in un volumetto $d^3\Vec{x}$ attorno a $\Vec{x}$ con una componente $\sigma$ di $s_z$.
+\\
+$\sigma$ può assumere $2s+1$ valori, per cui si hanno $2s+1$ funzioni che si possono vedere come le componenti di un vettore:
+\begin{equation}
+    \psi(\Vec{x},\sigma)
+\end{equation}
+In questo spazio il prodotto scalare è
+\begin{equation}
+    \bra{\varphi}\ket{\psi}=\int d^3\Vec{x} \ \sum_{\sigma} \varphi ^* (\Vec{x},\sigma)\psi(\Vec{x},\sigma)
+\end{equation}
+In cui, a fisso $\sigma$, 
+\begin{equation}
+    |\psi(\Vec{x},\sigma)|^2 d^3\Vec{x}
+\end{equation}
+rappresenta la probabilità di trovare la particella in un dato volumetto con proiezione di spin data.
+\\
+Mentre 
+\begin{equation}
+\sum_{\sigma}|\psi(\Vec{x},\sigma)|^2 d^3\Vec{x}    
+\end{equation}
+rappresenta la probabilità di trovare una particella in un volumetto con proiezione di spin arbitraria.
+\\
+Considerando allora una rotazione
+\begin{equation}
+    U(R)\psi(\Vec{x},\sigma)=\sum_{\sigma}D_{\sigma \sigma'}^{(s)}(R) \psi(R^{-1}\Vec{x},\sigma')
+\end{equation}
+si trova che, usualmente, il coefficiente (elemento di matrice)
+\begin{equation}
+    D_{\sigma' \sigma}=\bra{\sigma'}U(R)\ket{\sigma}
+\end{equation}
+ha il significato di proiezione sugli stati.
+
+\vspace{0.5cm}
+\subsection{Spin 1/2}
+Si possono definire due ket, $\ket{\pm}$, che descrivano gli autostati con $s_z=\pm1/2$.
+\\
+Se si scelgono come coordinate gli autovalori di $s_z$, questi ket sono i vettori di base:
+\begin{equation}
+    \ket{+}=\begin{pmatrix}
+    1 \\ 0
+    \end{pmatrix} \ \ \ \ \ ; \ \ \ \ \ \ket{-}=\begin{pmatrix}
+    0 \\ 1
+    \end{pmatrix}
+\end{equation}
+Si ricorda che il momento angolare ($\Vec{J}$, $\Vec{S}$, ...) trasforma come un \textit{vettore}.
+\\
+Inoltre, se $\ket{j,m}$ è un autostato di $J_z$ con autovalore $m$
+\begin{equation}
+    J_z\ket{j,m}=m\ket{j,m}
+\end{equation}
+E se si effettua una rotazione dello stato ci si attende che lo stato ruotato sia autostato del momento angolare lungo il nuovo asse, ottenuto ruotando l'asse $z$.
+\\
+Cioè, se $\Vec{n}=R\hat{\Vec{z}}$, il nuovo stato è $U(R)\ket{j,m}$, mentre la proiezione del momento angolare lungo $\Vec{n}$ è $\Vec{J}\cdot \Vec{n}$. Da cui:
+\begin{equation*}
+    \Vec{n}\cdot \Vec{J}U(R)\ket{j,m}=R\hat{\Vec{z}}\cdot \Vec{J}U(R)\ket{j,m}=U(R)\hat{\Vec{z}}\cdot \Vec{J}U^{\dagger}(R)U(R)\ket{j,m}=U(R)\hat{\Vec{z}}\cdot \Vec{J}\ket{j,m}=mU(R)\ket{j,m}
+\end{equation*}
+e si evince che lo stato ruotato è autostato dell'operatore ruotato.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{Rappresentazioni del gruppo delle rotazioni}
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{averroe.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{9mm}
+\epigraph{\'E cosa nota che la fama di molti predecessori è spesso causa di errori in molti successori.}{\textit{Averroè, 1126-1198 d.c.}}
+\vspace{9mm}
+
+\subsection{Interpretazione fisica}
+Per riassumere, dato uno stato scritto in rappresentazione dell'impulso:
+\begin{equation}
+    \ket{\Vec{P}}
+\end{equation}
+
+In ogni sistema è possibile, tramite una trasformazione di Galileo, ricondursi al sistema di riferimento del centro di massa, dove per definizione si annulla l'impulso totale. 
+\\
+Gli stati in questo sistema saranno descritti da:
+\begin{equation}
+    \ket{\Vec{0},\alpha}
+\end{equation}
+dove i numeri quantici $\alpha$ descrivono un insieme completo di osservabili compatibili che individuano univocamente il sistema.
+\\
+Supporre che un sistema nel riferimento del proprio centro di massa trasformi in maniera banale è troppo riduttivo.
+\\
+L'ipotesi minima, da un punto di vista gruppale, è che trasformi come una rappresentazione irriducibile del gruppo delle rotazioni.
+\\
+Seguendo nuovamente l'analogia (\ref{terra-sole}) si introduce allora il momento angolare intrinseco di un sistema, o \textit{spin}, $S$, che rende il sistema $2S+1$ volte degenere a seconda degli autovalori di $S_z$.
+\\
+Dal momento che le rotazioni sono una simmetria del sistema, sono descritte da operatori unitari $U(R)$ e, dato che $\vec{p}=\vec{0}$ è invariante sotto la loro azione, trovarsi in una rappresentazione irriducibile dell'algebra significa:
+\begin{equation}
+    U(R)\ket{\Vec{0},\sigma}=D^{(S)}_{\sigma' \sigma}\ket{\Vec{0},\sigma'}
+\end{equation}
+Perciò effettuando un Boost (Galileiano, perchè quelli relativistici non commutano con le rotazioni) si trova per uno stato qualunque:
+\begin{equation}
+    U(R)\ket{\Vec{p},\sigma}=D^{(S)}_{\sigma' \sigma}\ket{R\Vec{p},\sigma'}
+\end{equation}
+Per cui uno stato qualsiasi avrà una funzione d'onda:
+\begin{equation}
+    \bra{\vec{p},\sigma}\ket{\psi}\equiv \psi(\Vec{p})\equiv\psi(\Vec{p},\sigma)
+\end{equation}
+che trasforma secondo ($R^{-1}\Vec{p}$ è tale da restituire $\Vec{p}$ se viene ruotato)
+\begin{equation}
+    \psi_R(\Vec{p},\sigma)=D_{\sigma \sigma'}(R)\bra{R^{-1}\Vec{p},\sigma'}\ket{\psi}=D_{\sigma \sigma'}(R)\psi_{\sigma'}(R^{-1}\vec{p})
+\end{equation}
+E la stessa legge di trasformazione si riscontra nella posizione
+\begin{equation}
+    \psi_R(\Vec{x},\sigma)=D_{\sigma \sigma'}(R)\psi_{\sigma'}(R^{-1}\vec{x})
+\end{equation}
+Da cui si vede che il generatore totale delle rotazioni è
+\begin{equation}
+    \Vec{J}=\Vec{L}+\Vec{S}
+\end{equation}
+
+\vspace{0.5cm}
+
+\subsection{Trasformazione delle armoniche sferiche}
+Un'armonica sferica è la rappresentazione di uno stato $\ket{j,m}$ nella base degli autostati della posizione dei punti su una sfera unitaria, che sono identificati dagli angoli polare e azimutale $\theta, \phi$.
+\begin{equation}
+    Y_{\ell,m}(\theta,\phi)=\bra{\theta,\phi}\ket{\ell, m}\equiv\bra{\Vec{n}}\ket{\ell,m}
+\end{equation}
+Trovare la loro legge di trasformazione sotto rotazione permette di trovare la legge di trasformazione di qualsiasi funzione d'onda
+\begin{equation}
+    \bra{\Vec{n}}U(R)\ket{\ell,m}=\bra{R^{-1}\Vec{n}}\ket{\ell,m}=Y_{\ell,m}(R^{-1}\vec{n})
+\end{equation}
+Ma per quanto visto precedentemente deve essere
+\begin{equation}
+    Y_{\ell,m}(R^{-1}\Vec{n})=D_{sm}^{(\ell)}(R)Y_{\ell,s}(\theta,\phi)
+\end{equation}
+
+
+\textbf{STA PARTE è TUTTA DA RIFARE TANTO è LA TEORIA DEL MOMENTO ANGOLARE L'HO FATTA A GRUPPIIIIIIII}
+
+
+
+\newpage
+
+\part{Come la Gaia Scienza conobbe il peccato}
+
+\rule{\textwidth}{1pt}
+\vspace{2cm}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{Solvay_conference_1927.jpg}
+\label{fig:Solvay}
+\end{figure}
+
+\hfill \textit{Congresso di Solvay, 1927 d.c.}
+
+\vfill
+
+\epigraph{Adesso sono diventato Morte, il distruttore dei mondi.}{\textit{Bhagavadgītā, testo sacro induista.}}
+
+\newpage
+
+\titleformat{\section}[display]
+{\sffamily\bfseries\filleft}
+{\color{darkcandyapplered}\fontsize{26}{32}\selectfont\thesection}
+{0pt}
+{\huge\raggedleft}
+[{\color{darkcandyapplered}\titlerule[1pt]}]
+
+\section{Moto in campo centrale}
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{Planck.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{9mm}
+\epigraph{La scienza non può svelare il mistero fondamentale della natura. E questo perché, in ultima analisi, noi stessi siamo parte dell'enigma che stiamo cercando di risolvere.}{\textit{Max Planck, 1858-1947 d.c.}}
+\vspace{9mm}
+
+\newpage
+
+\section{\textit{Invarianza di gauge}}
+\begin{wrapfigure}[4]{L}{0.2\textwidth}
+  \begin{center}
+    \includegraphics[width=0.2\textwidth]{Dirac.jpg}
+  \end{center}
+\end{wrapfigure}\leavevmode
+
+\vspace{9mm}
+\epigraph{La bellezza matematica è una qualità che non può essere definita, non più di quanto la bellezza possa essere definita per l'arte, ma chi studia matematica, di solito, non ha difficoltà ad apprezzarla.}{\textit{Paul Dirac, 1902-1984 d.c.}}
+\vspace{9mm}
+
+In termini dei potenziali i campi elettromagnetici si scrivono
+\begin{equation}
+    \Vec{E}=-\nabla \Phi - \frac{1}{c}\frac{\partial \Vec{A}}{\partial t} \ \ \ \ \ ; \ \ \ \ \ \vec{B}=\nabla \wedge \Vec{A}
+\end{equation}
+E i campi in questa formulazione risultano invarianti effettuando la sostituzione
+\begin{equation}
+    \Vec{A}\to \vec{A}+\nabla \lambda \ \ \ \ \ ; \ \ \ \ \ \Phi \to \Phi - \frac{1}{c}\frac{\partial\lambda}{\partial t}
+\end{equation}
+
+
+
+\newpage
+
+\section{Conclusione}
+L'Autore si augura che chiunque abbia attinto a queste note abbia trovato i chiarimenti di cui necessitava e che riesca a passare con successo l'esame.
+\\
+Si augura maggiormente che tutti i lettori (come lui del resto) si siano stupiti, arrabbiati e divertiti nello studiare questa bizzarra materia, che abbiano trovato gli strumenti necessari a comprendere quanto poco ci sia accessibile della Natura e quanto ancora ci sia da meravigliarsi prima di averne chiare le dinamiche.
+\\
+Chi ha avuto le facoltà per assimilare tutto quanto riportato (diversamente dall'Autore) può sicuramente credere di aver acquisito quelle conoscenze necessarie ad interpretare correttamente questo microcosmo della Fisica.
+\\ \\
+
+E chi abbia l'ardire, nelle notti chiare e terse,  di tendere l'orecchio al Vuoto, potrebbe udirla, flebile nella distanza: la Sinfonia della Realtà.
+
+\vspace{3 cm}
+``I always thought something was fundamentally wrong with the universe'' \citep{adams1995hitchhiker}
+
+\vfill
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
